@@ -12,11 +12,12 @@ $( document ).ready(function(){
         $(element).find("#headerRow").addClass('odd')
 
         $(element).find("tr.odd").click(function() {
-            $(element).find("tr:not(.odd)").attr('id', '');
-            $(this).next("tr").attr('id','activeRow')
-
-            // $(element).find("tr:not(.odd)").hide();
+            $(element).find("td").attr('id', '');
+            $(this).next("tr").find('td').attr('id','activeRow')
+            $(element).find("tr:not(.odd)").hide();
             $(this).next("tr").toggle();
+
+            createChart();
         });
         
     }    
@@ -38,8 +39,10 @@ var margin = {
 var width = w - margin.left - margin.right;
 var height = h - margin.top - margin.bottom;
 
+
+
 function createChart(){
-  var svg = d3.select(".oddRow").append("svg")
+  var svg = d3.select("#activeRow").append("svg")
         .attr("id", "chart")
         .attr("width", w)
         .attr("height", h);
@@ -48,6 +51,6 @@ function createChart(){
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 }
 
-createChart();
+
 
 })
