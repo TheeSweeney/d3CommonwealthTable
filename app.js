@@ -9,6 +9,7 @@ $( document ).ready(function(){
         $(element).find("tr:first-child").show();
 
         $(element).find("tr.odd").click(function() {
+            $(element).find("tr:not(.odd)").hide();
             $(this).next("tr").toggle();
         });
         
