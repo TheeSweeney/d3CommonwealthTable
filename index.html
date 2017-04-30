@@ -3,12 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Exhibit 2</title>
-	<link rel="stylesheet" href="main.css">
 	<script
 	src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 	integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
 	crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="main.css">
 	<script  type="text/javascript" src="d3.min.js"></script>
 </head>
 <body>
@@ -17,7 +17,7 @@
 			Exhibit 2
 			<p>
 			<div id="tableContainer">
-				<table id="exhibitTable" class="table table-bordered table-hover table-condensed">
+				<table id="exhibitTable" class="table table-hover table-condensed">
 					<thead>
 						<tr id="headerRow">
 							<th title="Field #1"></th>
@@ -34,160 +34,155 @@
 							<th title="Field #12">US</th>
 						</tr>
 					</thead>
-					<tbody><tr>
-						<th class="leftAlign">OVERALL RANKING</th>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
-						<td>6</td>
-						<td>8</td>
-						<td>9</td>
-						<td>10</td>
-						<td>11</td>
-					</tr>
-					<tr>
-					</tr>
-					<tr>
-						<td class="leftAlign">Quality</td>
-						<td>2</td>
-						<td>1</td>
-						<td>4</td>
-						<td>3</td>
-						<td>10</td>
-						<td>11</td>
-						<td>7</td>
-						<td>8</td>
-						<td>6</td>
-						<td>9</td>
-						<td>5</td>
-					</tr>
-					<tr style="display: none;">
-            <td colspan="12" class="leftAlign oddRow">
+					<tbody>
+						<tr class="bookEnd">
+							<th class="leftAlign">OVERALL RANKING</th>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+							<td>6</td>
+							<td>6</td>
+							<td>8</td>
+							<td>9</td>
+							<td>10</td>
+							<td>11</td>
+						</tr>
+						<tr>
+						</tr>
+						<tr class="softBlue">
+							<td class="leftAlign">Quality</td>
+							<td>2</td>
+							<td>1</td>
+							<td>4</td>
+							<td>3</td>
+							<td>10</td>
+							<td>11</td>
+							<td>7</td>
+							<td>8</td>
+							<td>6</td>
+							<td>9</td>
+							<td>5</td>
+						</tr>
+						<tr style="display: none;">
+	            <td colspan="12" class="leftAlign oddRow">
                 <h4>Additional information</h4>
                 <ul>
-                    <li><a href="http://en.wikipedia.org/wiki/Usa">USA on Wikipedia</a></li>
-                    <li><a href="http://nationalatlas.gov/">National Atlas of the United States</a></li>
-                    <li><a href="http://www.nationalcenter.org/HistoricalDocuments.html">Historical Documents</a></li>
+                  <li><a href="http://en.wikipedia.org/wiki/Usa">USA on Wikipedia</a></li>
+                  <li><a href="http://nationalatlas.gov/">National Atlas of the United States</a></li>
+                  <li><a href="http://www.nationalcenter.org/HistoricalDocuments.html">Historical Documents</a></li>
                  </ul>   
-            </td>
-	        </tr>
-					<tr>
-						<td class="leftAlign">Access</td>
-						<td>4</td>
-						<td>3</td>
-						<td>1</td>
-						<td>7</td>
-						<td>5</td>
-						<td>6</td>
-						<td>8</td>
-						<td>2</td>
-						<td>10</td>
-						<td>9</td>
-						<td>11</td>
-					</tr>
-					<tr style="display: none;">
-            <td colspan="12" class="leftAlign oddRow">
+	            </td>
+		        </tr>
+						<tr class="softBlue">
+							<td class="leftAlign">Access</td>
+							<td>4</td>
+							<td>3</td>
+							<td>1</td>
+							<td>7</td>
+							<td>5</td>
+							<td>6</td>
+							<td>8</td>
+							<td>2</td>
+							<td>10</td>
+							<td>9</td>
+							<td>11</td>
+						</tr>
+						<tr style="display: none;">
+	            <td colspan="12" class="leftAlign oddRow">
                 <h4>Additional information</h4>
                 <ul>
-                    <li><a href="http://en.wikipedia.org/wiki/Usa">USA on Wikipedia</a></li>
-                    <li><a href="http://nationalatlas.gov/">National Atlas of the United States</a></li>
-                    <li><a href="http://www.nationalcenter.org/HistoricalDocuments.html">Historical Documents</a></li>
+                  <li><a href="http://en.wikipedia.org/wiki/Usa">USA on Wikipedia</a></li>
+                  <li><a href="http://nationalatlas.gov/">National Atlas of the United States</a></li>
+                  <li><a href="http://www.nationalcenter.org/HistoricalDocuments.html">Historical Documents</a></li>
                  </ul>   
-					</tr>
-					<tr>
-						<td class="leftAlign">Administrative Burden</td>
-						<td>1</td>
-						<td>3</td>
-						<td>9</td>
-						<td>2</td>
-						<td>4</td>
-						<td>5</td>
-						<td>8</td>
-						<td>6</td>
-						<td>6</td>
-						<td>11</td>
-						<td>10</td>
-					</tr>
-					<tr style="display: none;">
-            <td colspan="12" class="leftAlign oddRow">
+						</tr>
+						<tr class="softBlue">
+							<td class="leftAlign">Administrative Burden</td>
+							<td>1</td>
+							<td>3</td>
+							<td>9</td>
+							<td>2</td>
+							<td>4</td>
+							<td>5</td>
+							<td>8</td>
+							<td>6</td>
+							<td>6</td>
+							<td>11</td>
+							<td>10</td>
+						</tr>
+						<tr style="display: none;">
+	            <td colspan="12" class="leftAlign oddRow">
                 <h4>Additional information</h4>
                 <ul>
-                    <li><a href="http://en.wikipedia.org/wiki/Usa">USA on Wikipedia</a></li>
-                    <li><a href="http://nationalatlas.gov/">National Atlas of the United States</a></li>
-                    <li><a href="http://www.nationalcenter.org/HistoricalDocuments.html">Historical Documents</a></li>
+                  <li><a href="http://en.wikipedia.org/wiki/Usa">USA on Wikipedia</a></li>
+                  <li><a href="http://nationalatlas.gov/">National Atlas of the United States</a></li>
+                  <li><a href="http://www.nationalcenter.org/HistoricalDocuments.html">Historical Documents</a></li>
                  </ul>   
-					</tr>
-					<tr style="display: none;">
-            <td colspan="12" class="leftAlign oddRow">
+						</tr>
+						<tr class="softBlue">
+							<td class="leftAlign">Equity</td>
+							<td>7</td>
+							<td>1</td>
+							<td>2</td>
+							<td>8</td>
+							<td>5</td>
+							<td>3</td>
+							<td>4</td>
+							<td>6</td>
+							<td>9</td>
+							<td>10</td>
+							<td>11</td>
+						</tr>
+						<tr style="display: none;">
+	            <td colspan="12" class="leftAlign oddRow">
                 <h4>Additional information</h4>
                 <ul>
-                    <li><a href="http://en.wikipedia.org/wiki/Usa">USA on Wikipedia</a></li>
-                    <li><a href="http://nationalatlas.gov/">National Atlas of the United States</a></li>
-                    <li><a href="http://www.nationalcenter.org/HistoricalDocuments.html">Historical Documents</a></li>
+                  <li><a href="http://en.wikipedia.org/wiki/Usa">USA on Wikipedia</a></li>
+                  <li><a href="http://nationalatlas.gov/">National Atlas of the United States</a></li>
+                  <li><a href="http://www.nationalcenter.org/HistoricalDocuments.html">Historical Documents</a></li>
                  </ul>   
-						<td class="leftAlign">Equity</td>
-						<td>7</td>
-						<td>1</td>
-						<td>2</td>
-						<td>8</td>
-						<td>5</td>
-						<td>3</td>
-						<td>4</td>
-						<td>6</td>
-						<td>9</td>
-						<td>10</td>
-						<td>11</td>
-					</tr>
-					<tr style="display: none;">
-            <td colspan="12" class="leftAlign oddRow">
+						</tr>
+						<tr class="softBlue">
+							<td class="leftAlign">Health Care Outcomes</td>
+							<td>1</td>
+							<td>10</td>
+							<td>6</td>
+							<td>7</td>
+							<td>3</td>
+							<td>2</td>
+							<td>4</td>
+							<td>8</td>
+							<td>9</td>
+							<td>5</td>
+							<td>11</td>
+						</tr>
+						<tr style="display: none;">
+	            <td colspan="12" class="leftAlign oddRow">
                 <h4>Additional information</h4>
                 <ul>
-                    <li><a href="http://en.wikipedia.org/wiki/Usa">USA on Wikipedia</a></li>
-                    <li><a href="http://nationalatlas.gov/">National Atlas of the United States</a></li>
-                    <li><a href="http://www.nationalcenter.org/HistoricalDocuments.html">Historical Documents</a></li>
+                  <li><a href="http://en.wikipedia.org/wiki/Usa">USA on Wikipedia</a></li>
+                  <li><a href="http://nationalatlas.gov/">National Atlas of the United States</a></li>
+                  <li><a href="http://www.nationalcenter.org/HistoricalDocuments.html">Historical Documents</a></li>
                  </ul>   
-					</tr>
-					<tr>
-						<td class="leftAlign">Health Care Outcomes</td>
-						<td>1</td>
-						<td>10</td>
-						<td>6</td>
-						<td>7</td>
-						<td>3</td>
-						<td>2</td>
-						<td>4</td>
-						<td>8</td>
-						<td>9</td>
-						<td>5</td>
-						<td>11</td>
-					</tr>
-					<tr style="display: none;">
-            <td colspan="12" class="leftAlign oddRow">
-                <h4>Additional information</h4>
-                <ul>
-                    <li><a href="http://en.wikipedia.org/wiki/Usa">USA on Wikipedia</a></li>
-                    <li><a href="http://nationalatlas.gov/">National Atlas of the United States</a></li>
-                    <li><a href="http://www.nationalcenter.org/HistoricalDocuments.html">Historical Documents</a></li>
-                 </ul>   
-					</tr>
-					<tr>
-						<td class="leftAlign">Health Spending per Capita*</td>
-						<td>$4,207</td>
-						<td>$4,094</td>
-						<td>$5,277</td>
-						<td>$4,038</td>
-						<td>$6,432</td>
-						<td>$5,306</td>
-						<td>$6,787</td>
-						<td>$5,119</td>
-						<td>$4,724</td>
-						<td>$4,620</td>
-						<td>$9,364</td>
-					</tr>
-				</tbody></table>
+						</tr>
+						<tr class="bookEnd">
+							<td class="leftAlign">Health Spending per Capita*</td>
+							<td>$4,207</td>
+							<td>$4,094</td>
+							<td>$5,277</td>
+							<td>$4,038</td>
+							<td>$6,432</td>
+							<td>$5,306</td>
+							<td>$6,787</td>
+							<td>$5,119</td>
+							<td>$4,724</td>
+							<td>$4,620</td>
+							<td>$9,364</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<div>
 				<script src="./app.js"></script>
