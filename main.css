@@ -4,26 +4,34 @@ body,html{
 	font-family: "Arial", sans-serif;
 	font-size: 0.95em;
 	text-align: center;
+	display: flex;
+	justify-content: center;
 }
 .leftAlign {
 	text-align: left;
 }
-#table{
-	git
+
+#tableContainer{
+	min-width: 400px;
+	max-width: 1000px;
 }
+
 #chart{
 	background-color: #F5F2EB;
 	border: 1px solid #CCC;
 }
+
 .bar{
 	fill: purple;
 	shape-rendering: crispEdges;
 }
+
 .bar-label{
 	fill: black;
 	text-anchor: middle;
 	font-size: 18px;
 }
+
 .axis path,
 .axis line{
 	fill: none;
