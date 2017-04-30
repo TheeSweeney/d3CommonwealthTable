@@ -1,3 +1,5 @@
+$( document ).ready(function(){
+
 (function($){//TODO add to helper function file
     $.fn.jExpand = function(){
         var element = this;
@@ -36,3 +38,4 @@ $('#exhibitTable').jExpand()
 // var chart = svg.append("g")
 //       .classed("display", true)
 //       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+})
