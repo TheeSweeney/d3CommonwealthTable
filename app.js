@@ -42,6 +42,8 @@ var height = h - margin.top - margin.bottom;
 
 
 function createChart(){
+  d3.select("#chart").remove();
+
   var svg = d3.select("#activeRow").append("svg")
         .attr("id", "chart")
         .attr("width", w)
