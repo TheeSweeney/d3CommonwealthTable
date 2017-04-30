@@ -4,12 +4,18 @@ $( document ).ready(function(){
     $.fn.jExpand = function(){
         var element = this;
 
+        
         $(element).find("tr:odd").addClass("odd");
         $(element).find("tr:not(.odd)").hide();
         $(element).find("tr:first-child").show();
 
+        $(element).find("#headerRow").addClass('odd')
+
         $(element).find("tr.odd").click(function() {
-            $(element).find("tr:not(.odd)").hide();
+            $(element).find("tr:not(.odd)").attr('id', '');
+            $(this).next("tr").attr('id','activeRow')
+
+            // $(element).find("tr:not(.odd)").hide();
             $(this).next("tr").toggle();
         });
         
@@ -32,11 +38,16 @@ var margin = {
 var width = w - margin.left - margin.right;
 var height = h - margin.top - margin.bottom;
 
-var svg = d3.select(".oddRow").append("svg")
-      .attr("id", "chart")
-      .attr("width", w)
-      .attr("height", h);
-var chart = svg.append("g")
-      .classed("display", true)
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+function createChart(){
+  var svg = d3.select(".oddRow").append("svg")
+        .attr("id", "chart")
+        .attr("width", w)
+        .attr("height", h);
+  var chart = svg.append("g")
+        .classed("display", true)
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+}
+
+createChart();
+
 })
