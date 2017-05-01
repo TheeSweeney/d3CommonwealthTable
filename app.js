@@ -25,8 +25,6 @@ $( document ).ready(function(){
               $(this).next("tr").find('td').attr('id','')
             }
 
-
-
             createChart();
         });
         
@@ -64,11 +62,6 @@ var data = [
 ];
 
 
-//****************************   DELETE BOTH LINES BELOW ME   *************************************
-$('.testRow').show()
-createChart()
-
-
 
 function createChart(){
   d3.select("#chart").remove();
@@ -93,11 +86,14 @@ function createChart(){
   var ordinalColorScale = d3.scale.category20()
 
   function plot(params){
+    //enter
     this.selectAll('.bar')
           .data(params.data)
           .enter()
             .append('rect')
             .classed('bar', true)
+    //update
+    this.selectAll('.bar')
             .attr('x', function(d,i){
               return x(d.key)
             })
