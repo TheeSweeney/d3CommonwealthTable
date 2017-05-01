@@ -33,24 +33,28 @@ $( document ).ready(function(){
     }    
 })(jQuery); 
 
-
 $('#exhibitTable').jExpand()
 
-$('.testRow').show()
-// $('.testRow').css('display', 'block')
+
 
 var w = 400;
 var h = 225;
 var margin = {
-  top: 58,
-  bottom: 100,
-  left: 80,
-  right: 40
+  top: 20,
+  bottom: 20,
+  left: 20,
+  right: 20
 };
 var width = w - margin.left - margin.right;
 var height = h - margin.top - margin.bottom;
 
+var data = [132,71,337,93,78,43,20,16,30,8,17,21];
+
+
+//****************************   DELETE BOTH LINES BELOW ME   *************************************
+$('.testRow').show()
 createChart()
+
 
 
 function createChart(){
@@ -63,6 +67,28 @@ function createChart(){
   var chart = svg.append("g")
         .classed("display", true)
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  var x = d3.scale.linear()
+            .domain([0, d3.max(data)])
+            .range([0, width])
+  var y = d3.scale.linear()
+            .domain([0, data.length])
+            .range([0, height])
+
+  chart.selectAll('.bar')
+        .data(data)
+        .enter()
+          .append('rect')
+          .classed('bar', true)
+          .attr('x', 0)
+          .attr('y', function(d,i){
+            return y(i);
+          })
+          .attr('width', function(d,i){
+            return x(d);
+          })
+          .attr('height', function(d,i){
+            return y(1)-1
+          })
 }
 
 
