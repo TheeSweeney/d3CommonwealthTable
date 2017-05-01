@@ -85,10 +85,11 @@ function createChart(){
               return d.value
             })])
             .range([0, width])
-  var y = d3.scale.linear()
-            .domain([0, data.length])
-            .range([0, height])
-
+  var y = d3.scale.ordinal()
+            .domain(data.map(function(entry){
+              return entry.key;
+            }))
+            .rangeBands([0, height])
   function plot(params){
     this.selectAll('.bar')
           .data(params.data)
@@ -97,13 +98,13 @@ function createChart(){
             .classed('bar', true)
             .attr('x', 0)
             .attr('y', function(d,i){
-              return y(i);
+              return y(d.key);
             })
             .attr('width', function(d,i){
               return x(d.value);
             })
             .attr('height', function(d,i){
-              return y(1)-1
+              return y.rangeBand()-1
             })
   }
 
