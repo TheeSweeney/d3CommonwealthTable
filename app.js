@@ -31,6 +31,7 @@ $( document ).ready(function(){
     }    
 })(jQuery); 
 
+// $('#exhibitTable').jExpand()
 $('#testContainer').jExpand()
 
 

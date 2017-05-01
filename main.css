@@ -32,14 +32,15 @@ body,html{
 	float: right;
 }
 
+.softBlue{
+	background-color: rgb(219,242,242);
+}
+
 .bookEnd{
 	font-weight: 400;
 	background-color: rgb(183,229,228);
 }
 
-.softBlue{
-	background-color: rgb(219,242,242);
-}
 
 .table>tbody>tr>td, .table>thead>tr>th {
 	border-top: none;

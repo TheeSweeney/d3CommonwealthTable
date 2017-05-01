@@ -11,7 +11,7 @@ for (i = 0; i < 5; i++) {
 
 var dataset = [
     [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
-    ['','AUS','CAN','FRA','GER','NETH','NZ','NOR','SWE','SWIZ','UK','US'],
+    ['header','AUS','CAN','FRA','GER','NETH','NZ','NOR','SWE','SWIZ','UK','US'],
     ['  '],
     ['OVERALL RANKING',1,9,10,8,3,4,5,6,6,2,11],
     ['  '],
@@ -36,6 +36,13 @@ d3.select("#testContainer")
     .data(dataset)
     .enter()
     .append("tr")
+    .classed('softBlue', true)
+    .attr('id', function(d){
+        if(d[0] === 'header') return 'headerRow'
+    })
+    .classed('bookEnd', function(d){
+      if(d[0] === 'OVERALL RANKING' || d[0] === 'Health Spending per Capita*') return true  
+    })
     
     .selectAll("td")
     .data(function(d){return d;})
@@ -44,11 +51,15 @@ d3.select("#testContainer")
     .style('display', function(d){
         if(d === ' ') return 'none';
     })
-    .attr('colspan', function(d){
-        console.log(d[0])
-        if(d[0] === '  ') return 12
+    .style('color', function(d){
+        if(d === 'header') return 'rgb(4,76,127)';
     })
-    .on("mouseover", function(){d3.select(this).style("background-color", "aliceblue")}) 
-    .on("mouseout", function(){d3.select(this).style("background-color", "white")}) 
+    .attr('colspan', function(d){
+        console.log(d === '  ')
+        if(d === '  ') return 12
+    })
+    .style('background-color', function(d){
+        if(d === '  ') return 'white';
+    })
     .text(function(d){return d;})
     .style("font-size", "12px");
