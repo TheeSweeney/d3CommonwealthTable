@@ -51,7 +51,7 @@ var height = h - margin.top - margin.bottom;
 var data = [
   {key: "Glazed",   value: 132},
   {key: "Jelly",    value: 71},
-  {key: "Holes",    value: 337},
+  {key: "Holes",    value: 200},
   {key: "Sprinkles",  value: 93},
   {key: "Crumb",    value: 78},
   {key: "Chocolate",  value: 43},
@@ -80,16 +80,16 @@ function createChart(){
   var chart = svg.append("g")
         .classed("display", true)
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  var x = d3.scale.linear()
-            .domain([0, d3.max(data, function(d){
-              return d.value
-            })])
-            .range([0, width])
-  var y = d3.scale.ordinal()
+  var x = d3.scale.ordinal()
             .domain(data.map(function(entry){
               return entry.key;
             }))
-            .rangeBands([0, height])
+            .rangeBands([0, width])
+  var y = d3.scale.linear()
+            .domain([0, d3.max(data, function(d){
+              return d.value
+            })])
+            .range([height, 0])
   var ordinalColorScale = d3.scale.category20()
 
   function plot(params){
@@ -98,15 +98,17 @@ function createChart(){
           .enter()
             .append('rect')
             .classed('bar', true)
-            .attr('x', 0)
-            .attr('y', function(d,i){
-              return y(d.key);
+            .attr('x', function(d,i){
+              return x(d.key)
             })
-            .attr('width', function(d,i){
-              return x(d.value);
+            .attr('y', function(d,i){
+              return y(d.value);
             })
             .attr('height', function(d,i){
-              return y.rangeBand()-1
+              return height - y(d.value)
+            })
+            .attr('width', function(d,i){
+              return x.rangeBand();
             })
             .attr('fill', function(d,i){
               return ordinalColorScale(i)
