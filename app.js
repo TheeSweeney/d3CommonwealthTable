@@ -90,6 +90,8 @@ function createChart(){
               return entry.key;
             }))
             .rangeBands([0, height])
+  var ordinalColorScale = d3.scale.category20()
+
   function plot(params){
     this.selectAll('.bar')
           .data(params.data)
@@ -105,6 +107,9 @@ function createChart(){
             })
             .attr('height', function(d,i){
               return y.rangeBand()-1
+            })
+            .attr('fill', function(d,i){
+              return ordinalColorScale(i)
             })
   }
 

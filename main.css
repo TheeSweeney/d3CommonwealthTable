@@ -32,24 +32,6 @@ body,html{
 	float: right;
 }
 
-.bar{
-	fill: purple;
-	shape-rendering: crispEdges;
-}
-
-.bar-label{
-	fill: black;
-	text-anchor: middle;
-	font-size: 18px;
-}
-
-.axis path,
-.axis line{
-	fill: none;
-	stroke: #000;
-	shape-rendering: crispEdges;
-}
-
 .bookEnd{
 	font-weight: 400;
 	background-color: rgb(183,229,228);
