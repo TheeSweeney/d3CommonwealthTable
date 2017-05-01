@@ -48,7 +48,20 @@ var margin = {
 var width = w - margin.left - margin.right;
 var height = h - margin.top - margin.bottom;
 
-var data = [132,71,337,93,78,43,20,16,30,8,17,21];
+var data = [
+  {key: "Glazed",   value: 132},
+  {key: "Jelly",    value: 71},
+  {key: "Holes",    value: 337},
+  {key: "Sprinkles",  value: 93},
+  {key: "Crumb",    value: 78},
+  {key: "Chocolate",  value: 43},
+  {key: "Coconut",  value: 20},
+  {key: "Cream",    value: 16},
+  {key: "Cruller",  value: 30},
+  {key: "Éclair",   value: 8},
+  {key: "Fritter",  value: 17},
+  {key: "Bearclaw",   value: 21}
+];
 
 
 //****************************   DELETE BOTH LINES BELOW ME   *************************************
@@ -68,27 +81,40 @@ function createChart(){
         .classed("display", true)
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   var x = d3.scale.linear()
-            .domain([0, d3.max(data)])
+            .domain([0, d3.max(data, function(d){
+              return d.value
+            })])
             .range([0, width])
   var y = d3.scale.linear()
             .domain([0, data.length])
             .range([0, height])
 
-  chart.selectAll('.bar')
-        .data(data)
-        .enter()
-          .append('rect')
-          .classed('bar', true)
-          .attr('x', 0)
-          .attr('y', function(d,i){
-            return y(i);
-          })
-          .attr('width', function(d,i){
-            return x(d);
-          })
-          .attr('height', function(d,i){
-            return y(1)-1
-          })
+  function plot(params){
+    this.selectAll('.bar')
+          .data(params.data)
+          .enter()
+            .append('rect')
+            .classed('bar', true)
+            .attr('x', 0)
+            .attr('y', function(d,i){
+              return y(i);
+            })
+            .attr('width', function(d,i){
+              return x(d.value);
+            })
+            .attr('height', function(d,i){
+              return y(1)-1
+            })
+  }
+
+  plot.call(chart,{
+    data:data,
+    axes: {
+      x: x,
+      y: y
+    }
+  })
+
 }
 
 
