@@ -23,7 +23,9 @@ $( document ).ready(function(){
             if(alreadyActive){
               $(this).next('tr').toggle();
               $(this).next("tr").find('td').attr('id','')
-            } 
+            }
+
+
 
             createChart();
         });
@@ -34,7 +36,8 @@ $( document ).ready(function(){
 
 $('#exhibitTable').jExpand()
 
-
+$('.testRow').show()
+// $('.testRow').css('display', 'block')
 
 var w = 400;
 var h = 225;
@@ -47,6 +50,7 @@ var margin = {
 var width = w - margin.left - margin.right;
 var height = h - margin.top - margin.bottom;
 
+createChart()
 
 
 function createChart(){
