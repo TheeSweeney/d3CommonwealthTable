@@ -4,14 +4,13 @@ $( document ).ready(function(){
     $.fn.jExpand = function(){
         var element = this;
 
-        
-        $(element).find("tr:odd").addClass("odd");
-        $(element).find("tr:not(.odd)").hide();
+        // $(element).find("tr:odd").addClass("odd");
+        // $(element).find("tr:not(.odd)").hide();
         // $(element).find("tr:first-child").show();
 
         // $(element).find("#headerRow").addClass('odd')
 
-        $(element).find("tr.odd").click(function() {
+        // $(element).find("tr.odd").click(function() {
         //     var alreadyActive = false;
         //     if($(this).next("tr").find('td').attr('id') === 'activeRow') alreadyActive = true;
 
@@ -25,8 +24,9 @@ $( document ).ready(function(){
         //       $(this).next("tr").find('td').attr('id','')
         //     }
 
-        //     createChart();
-        });
+        //     createChart(); 
+            
+        // });
         
     }    
 })(jQuery);

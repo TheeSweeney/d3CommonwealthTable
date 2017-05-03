@@ -27,7 +27,7 @@ body,html{
 	text-align: center
 }
 
-#chart{
+#chart, #tableSVG{
 	border: 1px solid #CCC;
 	float: right;
 }
