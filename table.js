@@ -2,6 +2,7 @@
 function createTable(params){
     d3.select("#d3TableContainer")
         .append("table")
+        .attr('id', '#currentTable')
         .style("border-collapse", "collapse")
         
         .selectAll("tr")

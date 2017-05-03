@@ -2,7 +2,7 @@ var ascending = function(a,b){
   return a - b
 }
 
-function sortTable(tableData){
+function sortTable(tableData){//TODO fix problem with matching values -> click Overall, both Swe and Swiz are 6 so they stack
   var newTableData = [];
   var startSortData = d3.select(this).data()[0]
   var sortedStartRowData;
@@ -34,7 +34,15 @@ function sortTable(tableData){
     newTableData.push(newRow)
   })
   console.log(newTableData)
+
+  $('#d3TableContainer').empty()
+    
+
+  createTable({
+    data: newTableData
+  })
 }
+
 
 var tableData = [
     ['   '],
