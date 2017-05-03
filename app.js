@@ -12,73 +12,6 @@ var margin = {
 var width = w - margin.left - margin.right;
 var height = h - margin.top - margin.bottom;
 
-function createChart(){
-  d3.select("#chart").remove();
-
-  var svg = d3.select("#activeRow").append("svg")
-        .attr("id", "chart")
-        .attr("width", w)
-        .attr("height", h);
-  var chart = svg.append("g")
-        .classed("display", true)
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  var x = d3.scale.ordinal()
-            .domain(barData.map(function(entry){
-              return entry.key;
-            }))
-            .rangeBands([0, width])
-  var y = d3.scale.linear()
-            .domain([0, d3.max(barData, function(d){
-              return d.value
-            })])
-            .range([height, 0])
-  var ordinalColorScale = d3.scale.category20()
-
-  function addQuestions(params){
-    this.selectAll('.select')
-        .data([params.questions])
-  }
-
-  function plot(params){
-
-    addQuestions.call(chart, params);
-
-    //enter
-    this.selectAll('.bar')
-          .data(params.data)
-          .enter()
-            .append('rect')
-            .classed('bar', true)
-    //update
-    this.selectAll('.bar')
-            .attr('x', function(d,i){
-              return x(d.key)
-            })
-            .attr('y', function(d,i){
-              return y(d.value);
-            })
-            .attr('height', function(d,i){
-              return height - y(d.value)
-            })
-            .attr('width', function(d,i){
-              return x.rangeBand();
-            })
-            .attr('fill', function(d,i){
-              return ordinalColorScale(i)
-            })
-  }
-
-  plot.call(chart,{
-    data:barData,
-    axes: {
-      x: x,
-      y: y
-    }
-  })
-
-}
-
-
 var createTable = function(params){
     d3.select("#d3TableContainer")
         .append("table")
@@ -161,7 +94,7 @@ function sortTable(tableData){//TODO fix problem with matching values -> click O
 
     newTableData.push(newRow)
   })
-  console.log(newTableData)
+
 
   $('#d3TableContainer').empty()
     
@@ -175,25 +108,95 @@ createTable({
     data: tableData
 })
 
+function createChart(){
+  d3.select("#chart").remove();
+
+  var svg = d3.select("#activeRow").append("svg")
+        .attr("id", "chart")
+        .attr("width", w)
+        .attr("height", h);
+  var chart = svg.append("g")
+        .classed("display", true)
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  var x = d3.scale.ordinal()
+            .domain(barData.map(function(entry){
+              return entry.key;
+            }))
+            .rangeBands([0, width])
+  var y = d3.scale.linear()
+            .domain([0, d3.max(barData, function(d){
+              return d.value
+            })])
+            .range([height, 0])
+  var ordinalColorScale = d3.scale.category20()
+
+  function addQuestions(params){
+    this.selectAll('.select')
+        .data([params.questions])
+  }
+
+  function plot(params){
+
+    addQuestions.call(chart, params);
+
+    //enter
+    this.selectAll('.bar')
+          .data(params.data)
+          .enter()
+            .append('rect')
+            .classed('bar', true)
+    //update
+    this.selectAll('.bar')
+            .attr('x', function(d,i){
+              return x(d.key)
+            })
+            .attr('y', function(d,i){
+              return y(d.value);
+            })
+            .attr('height', function(d,i){
+              return height - y(d.value)
+            })
+            .attr('width', function(d,i){
+              return x.rangeBand();
+            })
+            .attr('fill', function(d,i){
+              return ordinalColorScale(i)
+            })
+  }
+
+  plot.call(chart,{
+    data:barData,
+    axes: {
+      x: x,
+      y: y
+    }
+  })
+
+}
+
 d3.selectAll('.odd')
     .on('click', function(){
-        // sortTable.call(this, tableData)
-        console.log(d3.select(this))
+      var rowId = $(this).attr('id')
+      sortTable.call(this, tableData)
 
-    var alreadyActive = false;
-    if($(this).next("tr").find('td').attr('id') === 'activeRow') alreadyActive = true;
 
-    $('#d3TableContainer').find("td").attr('id', '');
-    $(this).next("tr").find('td').attr('id','activeRow')
-    $('#d3TableContainer').find("tr:not(.odd)").hide();
-    $(this).next("tr").toggle();
+      // var alreadyActive = false;
+      // if($('#' + rowId).next("tr").find('td').attr('id') === 'activeRow') alreadyActive = true;
 
-    if(alreadyActive){
-      $(this).next('tr').toggle();
-      $(this).next("tr").find('td').attr('id','')
-    }
+      // $('#d3TableContainer').find("td").attr('id', '');
 
-    createChart();
+      $('#' + rowId).next("tr").find('td').attr('id','activeRow')
+      $('#d3TableContainer').find("tr:not(.odd)").hide();
+      $('#' + rowId).next("tr").toggle();
+      console.log($('#' + rowId))
+
+      // if(alreadyActive){
+      //   $('#' + rowId).next('tr').toggle();
+      //   $('#' + rowId).next("tr").find('td').attr('id','')
+      // }
+
+      createChart();
+
     })
 
 
