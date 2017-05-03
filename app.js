@@ -89,8 +89,10 @@ var createTable = function(params){
         .enter()
             .append("tr")
             .classed('softBlue', true)
-            .attr('id', function(d){
+            .attr('id', function(d,i){
                 if(d[0] === 'header') return 'headerRow'
+                if(d[0].replace(' ','').length < 3) return ('blank' + i)
+                return d[0].replace(' ', '') + 'Row'
             })
             .classed('bookEnd', function(d){
               if(d[0] === 'OVERALL RANKING' || d[0] === 'Health Spending per Capita*') return true  
@@ -122,32 +124,9 @@ var createTable = function(params){
 
 }
 
-createTable({
-    data: tableData
-})
-
-d3.selectAll('.odd')
-    .on('click', function(){
-        sortTable.call(this, tableData)
-            // var alreadyActive = false;
-            // if($(this).next("tr").find('td').attr('id') === 'activeRow') alreadyActive = true;
-
-            // $('#d3TableContainer').find("td").attr('id', '');
-            // $(this).next("tr").find('td').attr('id','activeRow')
-            // $('#d3TableContainer').find("tr:not(.odd)").hide();
-            // $(this).next("tr").toggle();
-
-            // if(alreadyActive){
-            //   $(this).next('tr').toggle();
-            //   $(this).next("tr").find('td').attr('id','')
-            // }
-
-            // createChart(); 
-    })
-
-var ascending = function(a,b){
-  return a - b
-}
+// function openRow(){
+  
+// }
 
 function sortTable(tableData){//TODO fix problem with matching values -> click Overall, both Swe and Swiz are 6 so they stack
   var newTableData = [];
@@ -157,7 +136,9 @@ function sortTable(tableData){//TODO fix problem with matching values -> click O
   tableData.forEach(function(row, i){
     if(row[0] === startSortData[0]){
       rowNumberData = startSortData.slice(0, startSortData.length);//remove title
-      sortedStartRowData = rowNumberData.sort(ascending)
+      sortedStartRowData = rowNumberData.sort(function(a,b){
+        return a - b
+      })
     }
   })
 
@@ -189,5 +170,32 @@ function sortTable(tableData){//TODO fix problem with matching values -> click O
     data: newTableData
   })
 }
+
+createTable({
+    data: tableData
+})
+
+d3.selectAll('.odd')
+    .on('click', function(){
+        // sortTable.call(this, tableData)
+        console.log(d3.select(this))
+
+    var alreadyActive = false;
+    if($(this).next("tr").find('td').attr('id') === 'activeRow') alreadyActive = true;
+
+    $('#d3TableContainer').find("td").attr('id', '');
+    $(this).next("tr").find('td').attr('id','activeRow')
+    $('#d3TableContainer').find("tr:not(.odd)").hide();
+    $(this).next("tr").toggle();
+
+    if(alreadyActive){
+      $(this).next('tr').toggle();
+      $(this).next("tr").find('td').attr('id','')
+    }
+
+    createChart();
+    })
+
+
 
 })
