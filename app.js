@@ -62,6 +62,7 @@ var createTable = function(params){
 // }
 
 function sortTable(tableData){//TODO fix problem with matching values -> click Overall, both Swe and Swiz are 6 so they stack
+  //TODO: clicking on header should be alphabetical sort
   var newTableData = [];
   var startSortData = d3.select(this).data()[0]
   var sortedStartRowData;
@@ -102,6 +103,12 @@ function sortTable(tableData){//TODO fix problem with matching values -> click O
   createTable({
     data: newTableData
   })
+
+  d3.selectAll('.odd')
+    .on('click', function(){
+      sortAndOpen.call(this, newTableData)
+    })
+
 }
 
 createTable({
@@ -173,11 +180,9 @@ function createChart(){
   })
 
 }
-
-d3.selectAll('.odd')
-    .on('click', function(){
+function sortAndOpen(data){
       var rowId = $(this).attr('id')
-      sortTable.call(this, tableData)
+      sortTable.call(this, data)
 
 
       // var alreadyActive = false;
@@ -185,18 +190,22 @@ d3.selectAll('.odd')
 
       // $('#d3TableContainer').find("td").attr('id', '');
 
-      $('#' + rowId).next("tr").find('td').attr('id','activeRow')
-      $('#d3TableContainer').find("tr:not(.odd)").hide();
-      $('#' + rowId).next("tr").toggle();
-      console.log($('#' + rowId))
+      // $('#' + rowId).next("tr").find('td').attr('id','activeRow')
+      // $('#d3TableContainer').find("tr:not(.odd)").hide();
+      // $('#' + rowId).next("tr").toggle();
+      // console.log($('#' + rowId))
 
       // if(alreadyActive){
       //   $('#' + rowId).next('tr').toggle();
       //   $('#' + rowId).next("tr").find('td').attr('id','')
       // }
 
-      createChart();
+      // createChart();
+}
 
+d3.selectAll('.odd')
+    .on('click', function(){
+      sortAndOpen.call(this, tableData)
     })
 
 
