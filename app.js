@@ -79,7 +79,7 @@ function createChart(){
 }
 
 
-function createTable(params){
+var createTable = function(params){
     d3.select("#d3TableContainer")
         .append("table")
         .style("border-collapse", "collapse")
@@ -128,22 +128,66 @@ createTable({
 
 d3.selectAll('.odd')
     .on('click', function(){
-        // sortTable.call(this, tableData)
-        console.log(d3.select(this).attr('id'))
-            var alreadyActive = false;
-            if($(this).next("tr").find('td').attr('id') === 'activeRow') alreadyActive = true;
+        sortTable.call(this, tableData)
+            // var alreadyActive = false;
+            // if($(this).next("tr").find('td').attr('id') === 'activeRow') alreadyActive = true;
 
-            $('#d3TableContainer').find("td").attr('id', '');
-            $(this).next("tr").find('td').attr('id','activeRow')
-            $('#d3TableContainer').find("tr:not(.odd)").hide();
-            $(this).next("tr").toggle();
+            // $('#d3TableContainer').find("td").attr('id', '');
+            // $(this).next("tr").find('td').attr('id','activeRow')
+            // $('#d3TableContainer').find("tr:not(.odd)").hide();
+            // $(this).next("tr").toggle();
 
-            if(alreadyActive){
-              $(this).next('tr').toggle();
-              $(this).next("tr").find('td').attr('id','')
-            }
+            // if(alreadyActive){
+            //   $(this).next('tr').toggle();
+            //   $(this).next("tr").find('td').attr('id','')
+            // }
 
-            createChart(); 
+            // createChart(); 
     })
+
+var ascending = function(a,b){
+  return a - b
+}
+
+function sortTable(tableData){//TODO fix problem with matching values -> click Overall, both Swe and Swiz are 6 so they stack
+  var newTableData = [];
+  var startSortData = d3.select(this).data()[0]
+  var sortedStartRowData;
+
+  tableData.forEach(function(row, i){
+    if(row[0] === startSortData[0]){
+      rowNumberData = startSortData.slice(0, startSortData.length);//remove title
+      sortedStartRowData = rowNumberData.sort(ascending)
+    }
+  })
+
+  function rowSort(newRow, row){//TODO handle last row
+    row.forEach(function(datum, i){
+      newRow[sortedStartRowData.indexOf(startSortData[i])] = row[i]
+    })
+    return newRow;
+  }
+
+  tableData.forEach(function(row, i){
+    var newRow = [];
+
+    if(row[row.length - 1].length == 3 ){
+       newRow = ['   ']
+    }else{
+
+      newRow = rowSort(newRow, row);
+    }
+
+    newTableData.push(newRow)
+  })
+  console.log(newTableData)
+
+  $('#d3TableContainer').empty()
+    
+
+  createTable({
+    data: newTableData
+  })
+}
 
 })
