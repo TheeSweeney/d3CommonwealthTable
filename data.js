@@ -45,7 +45,7 @@ function sortTable(tableData){//TODO fix problem with matching values -> click O
 
 
 var tableData = [
-    ['   '],
+    [' '],
     ['header','AUS','CAN','FRA','GER','NETH','NZ','NOR','SWE','SWIZ','UK','US'],
     ['   '],
     ['OVERALL RANKING',1,9,10,8,3,4,5,6,6,2,11],
