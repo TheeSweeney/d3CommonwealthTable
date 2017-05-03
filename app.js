@@ -11,7 +11,7 @@ $( document ).ready(function(){
 
         // $(element).find("#headerRow").addClass('odd')
 
-        // $(element).find("tr.odd").click(function() {
+        $(element).find("tr.odd").click(function() {
         //     var alreadyActive = false;
         //     if($(this).next("tr").find('td').attr('id') === 'activeRow') alreadyActive = true;
 
@@ -26,10 +26,11 @@ $( document ).ready(function(){
         //     }
 
         //     createChart();
-        // });
+        });
         
     }    
-})(jQuery); 
+})(jQuery);
+
 
 $('#d3TableContainer').jExpand()
 $('#tableContainer').jExpand()
