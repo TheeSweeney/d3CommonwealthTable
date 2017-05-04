@@ -47,13 +47,18 @@ var createTable = function(params){
             if(d === 'header') return 'rgb(4,76,127)';
         })
         .attr('colspan', function(d){
-            if(d === '   ') return 12
+            if(d === '   ') return 12;
         })
         .style('background-color', function(d){
             if(d === '   ') return 'white';
         })
-        .text(function(d){return d;})
+        .text(function(d){
+          return d;
+        })
         .style("font-size", "12px")
+        .classed('leftAlign', function(d){
+          if(d.length > 4) return true;
+        })
         
     $('#d3TableContainer').find("tr:odd").addClass("odd");
     $('#d3TableContainer').find("tr:not(.odd)").hide();
@@ -197,7 +202,7 @@ function sortAndOpen(data){
       $('#d3TableContainer').find("tr:not(.odd)").hide();
       $('#' + rowId).next("tr").toggle();
       
-      
+
       if(alreadyActive){
         $('#' + rowId).next('tr').toggle();
         $('#' + rowId).next("tr").find('td').attr('id','')
