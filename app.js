@@ -12,6 +12,10 @@ var margin = {
 var width = w - margin.left - margin.right;
 var height = h - margin.top - margin.bottom;
 
+var linearColorScale = d3.scale.linear()
+                        .domain([0, 10])
+                        .range(['#dbf2f2','#044c7f']);
+
 var createTable = function(params){
     d3.select("#d3TableContainer")
         .append("table")
@@ -134,7 +138,7 @@ function createChart(){
               return d.value
             })])
             .range([height, 0])
-  var ordinalColorScale = d3.scale.category20()
+  
 
   function addQuestions(params){
     this.selectAll('.select')
@@ -166,7 +170,7 @@ function createChart(){
               return x.rangeBand();
             })
             .attr('fill', function(d,i){
-              return ordinalColorScale(i)
+              return linearColorScale(i)
             })
   }
 
@@ -189,9 +193,9 @@ function sortAndOpen(data){
 
       // $('#d3TableContainer').find("td").attr('id', '');
 
-      // $('#' + rowId).next("tr").find('td').attr('id','activeRow')
-      // $('#d3TableContainer').find("tr:not(.odd)").hide();
-      // $('#' + rowId).next("tr").toggle();
+      $('#' + rowId).next("tr").find('td').attr('id','activeRow')
+      $('#d3TableContainer').find("tr:not(.odd)").hide();
+      $('#' + rowId).next("tr").toggle();
       // console.log($('#' + rowId))
 
       // if(alreadyActive){
@@ -199,7 +203,7 @@ function sortAndOpen(data){
       //   $('#' + rowId).next("tr").find('td').attr('id','')
       // }
 
-      // createChart();
+      createChart();
 }
 
 d3.selectAll('.odd')
