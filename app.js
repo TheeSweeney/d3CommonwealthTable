@@ -34,6 +34,7 @@ var createTable = function(params){
             .classed('bookEnd', function(d){
               if(d[0] === 'OVERALL RANKING' || d[0] === 'Health Spending per Capita*') return true  
             })
+           
             
      .selectAll("td")
         .data(function(d){return d;})
@@ -52,7 +53,7 @@ var createTable = function(params){
             if(d === '   ') return 'white';
         })
         .text(function(d){return d;})
-        .style("font-size", "12px");
+        .style("font-size", "12px")
         
     $('#d3TableContainer').find("tr:odd").addClass("odd");
     $('#d3TableContainer').find("tr:not(.odd)").hide();
@@ -121,7 +122,7 @@ createTable({
 function createChart(){
   d3.select("#chart").remove();
 
-  var svg = d3.select("#activeRow").append("svg")
+  var svg = d3.select(".activeRow").append("svg")
         .attr("id", "chart")
         .attr("width", w)
         .attr("height", h);
@@ -180,28 +181,29 @@ function createChart(){
       x: x,
       y: y
     }
-  })
+  });
 
 }
+var activeRowId;
 function sortAndOpen(data){
-      var rowId = $(this).attr('id')
-      sortTable.call(this, data)
-
-
-      // var alreadyActive = false;
-      // if($('#' + rowId).next("tr").find('td').attr('id') === 'activeRow') alreadyActive = true;
-
-      // $('#d3TableContainer').find("td").attr('id', '');
-
-      $('#' + rowId).next("tr").find('td').attr('id','activeRow')
+      var alreadyActive = false;
+      if($(this).attr('id') === activeRowId) alreadyActive = true;
+      
+      var rowId = $(this).attr('id');
+      activeRowId = rowId
+      sortTable.call(this, data);
+      
+      $('#' + rowId).next("tr").find('td').addClass('activeRow')
       $('#d3TableContainer').find("tr:not(.odd)").hide();
       $('#' + rowId).next("tr").toggle();
-      // console.log($('#' + rowId))
+      
+      
+      if(alreadyActive){
+        $('#' + rowId).next('tr').toggle();
+        $('#' + rowId).next("tr").find('td').attr('id','')
 
-      // if(alreadyActive){
-      //   $('#' + rowId).next('tr').toggle();
-      //   $('#' + rowId).next("tr").find('td').attr('id','')
-      // }
+        activeRowId = 'none'
+      }
 
       createChart();
 }

@@ -33,7 +33,134 @@ var barData = [
   {key: "Fritter",  value: 17},
   {key: "Bearclaw",   value: 21}
 ];
-
+// [
+//   {
+//     "q": "Talked with provider about things in life that cause worry or stress in the past two years, among those with a history of mental illness",
+//     "AUS": 74,
+//     "CAN": 63,
+//     "FRA": "--",
+//     "GER": 46,
+//     "NETH": 62,
+//     "NZ": 67,
+//     "NOR": 62,
+//     "SWE": 58,
+//     "SWIZ": 72,
+//     "UK": 58,
+//     "US": 64
+//   },
+//   {
+//     "q": "Talked with provider about healthy diet, exercise and physical activity in the past two years",
+//     "AUS": 38,
+//     "CAN": 41,
+//     "FRA": 16,
+//     "GER": 17,
+//     "NETH": 24,
+//     "NZ": 37,
+//     "NOR": 20,
+//     "SWE": 21,
+//     "SWIZ": 28,
+//     "UK": 33,
+//     "US": 59
+//   },
+//   {
+//     "q": "Talked with provider about health risks of smoking and ways to quit in the past two years, among smokers",
+//     "AUS": 56,
+//     "CAN": 71,
+//     "FRA": 49,
+//     "GER": 17,
+//     "NETH": 53,
+//     "NZ": 59,
+//     "NOR": 25,
+//     "SWE": 49,
+//     "SWIZ": 36,
+//     "UK": 57,
+//     "US": 74
+//   },
+//   {
+//     "q": "Talked with provider about alcohol use in the past two years",
+//     "AUS": 25,
+//     "CAN": 23,
+//     "FRA": 9,
+//     "GER": 8,
+//     "NETH": 25,
+//     "NZ": 23,
+//     "NOR": 9,
+//     "SWE": 20,
+//     "SWIZ": 11,
+//     "UK": 25,
+//     "US": 33
+//   },
+//   {
+//     "q": "Women age 50-69 with mammography screening in the past year",
+//     "AUS": 54,
+//     "CAN": 72,
+//     "FRA": 75,
+//     "GER": 71,
+//     "NETH": 80,
+//     "NZ": 72,
+//     "NOR": 75,
+//     "SWE": "--",
+//     "SWIZ": 47,
+//     "UK": 75,
+//     "US": 81
+//   },
+//   {
+//     "q": "Older adults (age 65 plus) with influenza vaccination in the past year",
+//     "AUS": "--",
+//     "CAN": 63,
+//     "FRA": 49,
+//     "GER": 59,
+//     "NETH": 72,
+//     "NZ": 69,
+//     "NOR": 27,
+//     "SWE": 50,
+//     "SWIZ": 46,
+//     "UK": 75,
+//     "US": 68
+//   },
+//   {
+//     "q": "Avoidable hospital admissions for diabetes, age-sex standardized rates per 100,000",
+//     "AUS": 141,
+//     "CAN": 95,
+//     "FRA": 181,
+//     "GER": 216,
+//     "NETH": 68,
+//     "NZ": 187,
+//     "NOR": 76,
+//     "SWE": 111,
+//     "SWIZ": 44,
+//     "UK": 64,
+//     "US": 198
+//   },
+//   {
+//     "q": "Avoidable hospital admissions for asthma, age-sex standardized rates per 100,000",
+//     "AUS": 65,
+//     "CAN": 15,
+//     "FRA": 30,
+//     "GER": 23,
+//     "NETH": 31,
+//     "NZ": 72,
+//     "NOR": 26,
+//     "SWE": 23,
+//     "SWIZ": 13,
+//     "UK": 61,
+//     "US": 103
+//   },
+//   {
+//     "q": "Avoidable hospital admissions for congestive heart failure, age-sex standardized rates per 100,000",
+//     "AUS": 240,
+//     "CAN": 179,
+//     "FRA": 238,
+//     "GER": 382,
+//     "NETH": 199,
+//     "NZ": 229,
+//     "NOR": 175,
+//     "SWE": 300,
+//     "SWIZ": 174,
+//     "UK": 99,
+//     "US": 367
+//   }
+// ]
 
 
 
