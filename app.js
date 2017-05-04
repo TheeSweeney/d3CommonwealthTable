@@ -86,7 +86,7 @@ function sortTable(tableData){//TODO fix problem with matching values -> click O
   tableData.forEach(function(row, i){
     var newRow = [];
 
-    if(row[row.length - 1].length == 3 ){
+    if(row[0].length == 3 ){
        newRow = ['   ']
     }else{
 
@@ -99,7 +99,6 @@ function sortTable(tableData){//TODO fix problem with matching values -> click O
 
   $('#d3TableContainer').empty()
     
-
   createTable({
     data: newTableData
   })
