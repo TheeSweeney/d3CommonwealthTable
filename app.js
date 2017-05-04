@@ -125,6 +125,9 @@ createTable({
 })
 
 function createChart(){
+
+  console.log(qualityQuestions[0].sectionData[0].data)
+  console.log(barData)
   d3.select("#chart").remove();
 
   var svg = d3.select(".activeRow").append("svg")
@@ -135,12 +138,12 @@ function createChart(){
         .classed("display", true)
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   var x = d3.scale.ordinal()
-            .domain(barData.map(function(entry){
-              return entry.key;
+            .domain(qualityQuestions[0].sectionData[0].data.map(function(entry){
+              return entry.country;
             }))
             .rangeBands([0, width])
   var y = d3.scale.linear()
-            .domain([0, d3.max(barData, function(d){
+            .domain([0, d3.max(qualityQuestions[0].sectionData[0].data, function(d){
               return d.value
             })])
             .range([height, 0])
@@ -164,7 +167,7 @@ function createChart(){
     //update
     this.selectAll('.bar')
             .attr('x', function(d,i){
-              return x(d.key)
+              return x(d.country)
             })
             .attr('y', function(d,i){
               return y(d.value);
@@ -181,7 +184,7 @@ function createChart(){
   }
 
   plot.call(chart,{
-    data:barData,
+    data:qualityQuestions[0].sectionData[0].data,
     axes: {
       x: x,
       y: y
