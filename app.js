@@ -139,7 +139,16 @@ function createChart(){
 }
 
 function createSubsections(rowId){
-  console.log(rowId.slice(0, -3) + 'Questions')
+  console.log(subsectionData[rowId.slice(0, -3) + 'Questions'])
+  d3.select('.activeRow').selectAll('.subsectionBar')
+      .data(subsectionData[rowId.slice(0, -3) + 'Questions'])
+      .enter()
+        .append('text')
+        .attr('x', 0)
+        .attr('y', 0)
+        .html(function(d){
+          return d.questionSet;
+        })
 }
 
 var activeRowId;
