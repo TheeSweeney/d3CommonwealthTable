@@ -29,7 +29,7 @@ var createTable = function(params){
             .attr('id', function(d,i){
                 if(d[0] === 'header') return 'headerRow'
                 if(d[0].replace(' ','').length < 3) return ('blank' + i)
-                return d[0].replace(' ', '') + 'Row'
+                return d[0].split(' ').join('') + 'Row'
             })
             .classed('bookEnd', function(d){
               if(d[0] === 'OVERALL RANKING' || d[0] === 'Health Spending per Capita*') return true  
@@ -103,8 +103,6 @@ function createChart(){
 
   function plot(params){
 
-    addQuestions.call(chart, params);
-
     //enter
     this.selectAll('.bar')
           .data(params.data)
@@ -140,7 +138,8 @@ function createChart(){
 
 }
 var activeRowId;
-function sortAndOpen(data){
+function opentChart(data){
+  console.log('ere')
       var alreadyActive = false;
       if($(this).attr('id') === activeRowId) alreadyActive = true;
       
@@ -148,6 +147,8 @@ function sortAndOpen(data){
       activeRowId = rowId
         
       d3.select('.activeRow').classed('activeRow', false);
+
+      console.log($('#' + rowId).next("tr").find('td'))
 
       
       $('#' + rowId).next("tr").find('td').addClass('activeRow')
@@ -167,7 +168,7 @@ function sortAndOpen(data){
 
 d3.selectAll('.odd')
     .on('click', function(){
-      sortAndOpen.call(this, tableData)
+      opentChart.call(this, tableData)
     })
 
 
