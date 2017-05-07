@@ -144,7 +144,8 @@ function sortAndOpen(data){
       
       var rowId = $(this).attr('id');
       activeRowId = rowId
-        d3.select('.activeRow').remove();
+        
+      d3.select('.activeRow').classed('activeRow', false);
 
       
       $('#' + rowId).next("tr").find('td').addClass('activeRow')
