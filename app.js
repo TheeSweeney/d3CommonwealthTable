@@ -85,12 +85,12 @@ function createChart(){
         .classed("display", true)
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   var x = d3.scale.ordinal()
-            .domain(qualityQuestions[0].sectionData[0].data.map(function(entry){
+            .domain(QualityQuestions[0].sectionData[0].data.map(function(entry){
               return entry.country;
             }))
             .rangeBands([0, width])
   var y = d3.scale.linear()
-            .domain([0, d3.max(qualityQuestions[0].sectionData[0].data, function(d){
+            .domain([0, d3.max(QualityQuestions[0].sectionData[0].data, function(d){
               return d.value
             })])
             .range([height, 0])
@@ -129,7 +129,7 @@ function createChart(){
   }
 
   plot.call(chart,{
-    data:qualityQuestions[0].sectionData[0].data,
+    data:QualityQuestions[0].sectionData[0].data,
     axes: {
       x: x,
       y: y

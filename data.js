@@ -34,7 +34,7 @@ var barData = [
   {key: "Bearclaw",   value: 21}
 ];
 
-var qualityQuestions = [
+var QualityQuestions = [
   {
     questionSet: "Preventative Car Measures",
     sectionData: [
@@ -191,6 +191,28 @@ var qualityQuestions = [
          {country:  "US", value: 367},
        ]
       }
+    ]
+  },
+  {
+    questionSet: "Other Measures",
+    sectionData: [
+      {
+        qid:'1',
+        "q": "Talked with provider about things in life that cause worry or stress in the past two years, among those with a history of mental illness",
+        data:[
+          {country: "AUS", value: 74},
+          {country: "CAN", value: 63},
+          {country: "FRA", value: 0},
+          {country: "GER", value: 46},
+          {country: "NETH", value: 62},
+          {country: "NZ", value: 67},
+          {country: "NOR", value: 62},
+          {country: "SWE", value: 58},
+          {country: "SWIZ", value: 72},
+          {country: "UK", value: 58},
+          {country: "US", value: 64},
+        ],
+      },
     ]
   }
 ]
