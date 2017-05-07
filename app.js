@@ -85,12 +85,12 @@ function createChart(){
         .classed("display", true)
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   var x = d3.scale.ordinal()
-            .domain(QualityQuestions[0].sectionData[0].data.map(function(entry){
+            .domain(subsectionData['QualityQuestions'][0].sectionData[0].data.map(function(entry){
               return entry.country;
             }))
             .rangeBands([0, width])
   var y = d3.scale.linear()
-            .domain([0, d3.max(QualityQuestions[0].sectionData[0].data, function(d){
+            .domain([0, d3.max(subsectionData['QualityQuestions'][0].sectionData[0].data, function(d){
               return d.value
             })])
             .range([height, 0])
@@ -129,7 +129,7 @@ function createChart(){
   }
 
   plot.call(chart,{
-    data:QualityQuestions[0].sectionData[0].data,
+    data:subsectionData['QualityQuestions'][0].sectionData[0].data,
     axes: {
       x: x,
       y: y
@@ -137,9 +137,13 @@ function createChart(){
   });
 
 }
+
+function createSubsections(rowId){
+  console.log(rowId.slice(0, -3) + 'Questions')
+}
+
 var activeRowId;
 function opentChart(data){
-  console.log('ere')
       var alreadyActive = false;
       if($(this).attr('id') === activeRowId) alreadyActive = true;
       
@@ -148,7 +152,6 @@ function opentChart(data){
         
       d3.select('.activeRow').classed('activeRow', false);
 
-      console.log($('#' + rowId).next("tr").find('td'))
 
       
       $('#' + rowId).next("tr").find('td').addClass('activeRow')
@@ -163,12 +166,14 @@ function opentChart(data){
         activeRowId = 'none'
       }
 
+      createSubsections.call(this, rowId);
+
       createChart();
 }
 
 d3.selectAll('.odd')
     .on('click', function(){
-      opentChart.call(this, tableData)
+      opentChart.call(this)
     })
 
 
