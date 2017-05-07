@@ -67,67 +67,12 @@ var createTable = function(params){
 
 }
 
-// function openRow(){
-  
-// }
-
-function sortTable(tableData){//TODO fix problem with matching values -> click Overall, both Swe and Swiz are 6 so they stack
-  //TODO: clicking on header should be alphabetical sort
-  var newTableData = [];
-  var startSortData = d3.select(this).data()[0]
-  var sortedStartRowData;
-
-  tableData.forEach(function(row, i){
-    if(row[0] === startSortData[0]){
-      rowNumberData = startSortData.slice(0, startSortData.length);//remove title
-      sortedStartRowData = rowNumberData.sort(function(a,b){
-        return a - b
-      })
-    }
-  })
-
-  function rowSort(newRow, row){//TODO handle last row
-    row.forEach(function(datum, i){
-      newRow[sortedStartRowData.indexOf(startSortData[i])] = row[i]
-    })
-    return newRow;
-  }
-
-  tableData.forEach(function(row, i){
-    var newRow = [];
-
-    if(row[0].length == 3 ){
-       newRow = ['   ']
-    }else{
-
-      newRow = rowSort(newRow, row);
-    }
-
-    newTableData.push(newRow)
-  })
-
-
-  $('#d3TableContainer').empty()
-    
-  createTable({
-    data: newTableData
-  })
-
-  d3.selectAll('.odd')
-    .on('click', function(){
-      sortAndOpen.call(this, newTableData)
-    })
-
-}
-
 createTable({
     data: tableData
 })
 
 function createChart(){
 
-  console.log(qualityQuestions[0].sectionData[0].data)
-  console.log(barData)
   d3.select("#chart").remove();
 
   var svg = d3.select(".activeRow").append("svg")
@@ -199,7 +144,8 @@ function sortAndOpen(data){
       
       var rowId = $(this).attr('id');
       activeRowId = rowId
-      sortTable.call(this, data);
+        d3.select('.activeRow').remove();
+
       
       $('#' + rowId).next("tr").find('td').addClass('activeRow')
       $('#d3TableContainer').find("tr:not(.odd)").hide();
