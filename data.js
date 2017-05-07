@@ -37,7 +37,7 @@ var barData = [
 var subsectionData = {
   QualityQuestions: [
     {
-      questionSet: "Preventative Car Measures",
+      questionSet: "Preventative Care Measures",
       sectionData: [
         {
           qid:'1',

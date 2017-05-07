@@ -134,9 +134,9 @@ function createChart(){
   });
 
 }
-
+var activeSubsection;
 function createSubsections(rowId){
-  console.log(subsectionData[rowId.slice(0, -3) + 'Questions'])
+
   d3.select('.activeRow').selectAll('.subsectionBar')
       .data(subsectionData[rowId.slice(0, -3) + 'Questions'])
       .enter()
@@ -144,7 +144,25 @@ function createSubsections(rowId){
         .html(function(d){
           return d.questionSet;
         })
+        .attr('id', function(d){
+          return (d.questionSet.split(' ').join('') + 'Id')
+        })
         .classed('subsectionBar', true)
+
+  d3.selectAll('.subsectionBar')
+  .on('click', function(){
+    $('.subsectionBar').hide();
+
+    var alreadyActive = false;
+
+    if($(this).attr('id') !== activeSubsection){
+      activeSubsection = $(this).attr('id');
+      $('#' + $(this).attr('id')).show();
+    }else{
+      activeSubsection = '';
+      $('.subsectionBar').show();
+    }
+  })
 }
 
 var activeRowId;
@@ -180,6 +198,8 @@ d3.selectAll('.odd')
     .on('click', function(){
       opentChart.call(this)
     })
+
+
 
 
 

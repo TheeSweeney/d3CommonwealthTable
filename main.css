@@ -62,4 +62,6 @@ body,html{
 	color: rgb(255,96,0);
 	font-weight: 500;
 	font-size: 15px;
+  width: 49%;
+  text-align: left;
 }
