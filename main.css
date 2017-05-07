@@ -18,7 +18,7 @@ body,html{
 }
 
 #headerRow{
-	background-color: rgb(4,76,127);
+	background-color: rgb(17,73,131);
 	color: white;
 }
 
@@ -30,6 +30,7 @@ body,html{
 #chart, #tableSVG{
 	border: 1px solid #CCC;
 	float: right;
+	background-color: white;
 }
 
 #blank0{
@@ -37,16 +38,28 @@ body,html{
 }
 
 .softBlue{
-	background-color: rgb(219,242,242);
+	background-color: rgb(219,244,245);
 }
 
 .bookEnd{
 	font-weight: 600;
-	background-color: rgb(183,229,228);
+	background-color: rgb(180,233,230);
 }
 
 
 .table>tbody>tr>td, .table>thead>tr>th {
 	border-top: none;
 	border-bottom: none;
+}
+
+.activeRow{
+	background-color: rgb(237,249,250);
+}
+
+.subsectionBar {
+	float: left;
+	clear: left;
+	color: rgb(255,96,0);
+	font-weight: 500;
+	font-size: 15px;
 }

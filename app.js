@@ -49,9 +49,6 @@ var createTable = function(params){
         .attr('colspan', function(d){
             if(d === '   ') return 12;
         })
-        .style('background-color', function(d){
-            if(d === '   ') return 'white';
-        })
         .text(function(d){
           return d;
         })
@@ -144,11 +141,10 @@ function createSubsections(rowId){
       .data(subsectionData[rowId.slice(0, -3) + 'Questions'])
       .enter()
         .append('text')
-        .attr('x', 0)
-        .attr('y', 0)
         .html(function(d){
           return d.questionSet;
         })
+        .classed('subsectionBar', true)
 }
 
 var activeRowId;
