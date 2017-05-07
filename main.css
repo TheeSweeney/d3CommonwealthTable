@@ -32,6 +32,10 @@ body,html{
 	float: right;
 }
 
+#blank0{
+	display: none;
+}
+
 .softBlue{
 	background-color: rgb(219,242,242);
 }

@@ -64,6 +64,8 @@ var createTable = function(params){
     $('#d3TableContainer').find("tr:not(.odd)").hide();
     $('#d3TableContainer').find("tr:first-child").show();
     $('#d3TableContainer').find("#headerRow").addClass('odd')
+    $('#d3TableContainer').find("#blank0").css('display', 'none')
+
 
 }
 
