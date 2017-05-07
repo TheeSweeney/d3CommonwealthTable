@@ -148,21 +148,31 @@ function createSubsections(rowId){
           return (d.questionSet.split(' ').join('') + 'Id')
         })
         .classed('subsectionBar', true)
+          .append('select')
+          .selectAll('.subsectionQuestions')
+            .data(function(d){
+              return d.sectionData
+            })
+            .enter()
+              .append('option')
+              .text(function(d){
+                return d.q
+              })
 
-  d3.selectAll('.subsectionBar')
-  .on('click', function(){
-    $('.subsectionBar').hide();
+  // d3.selectAll('.subsectionBar')
+  // .on('click', function(){
+  //   $('.subsectionBar').hide();
 
-    var alreadyActive = false;
+  //   var alreadyActive = false;
 
-    if($(this).attr('id') !== activeSubsection){
-      activeSubsection = $(this).attr('id');
-      $('#' + $(this).attr('id')).show();
-    }else{
-      activeSubsection = '';
-      $('.subsectionBar').show();
-    }
-  })
+  //   if($(this).attr('id') !== activeSubsection){
+  //     activeSubsection = $(this).attr('id');
+  //     $('#' + $(this).attr('id')).show();
+  //   }else{
+  //     activeSubsection = '';
+  //     $('.subsectionBar').show();
+  //   }
+  // })
 }
 
 var activeRowId;

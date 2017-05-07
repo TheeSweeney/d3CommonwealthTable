@@ -65,3 +65,10 @@ body,html{
   width: 49%;
   text-align: left;
 }
+
+/*select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}*/
