@@ -134,6 +134,40 @@ function createChart(){
   });
 
 }
+
+function createQuestionSet(){
+  $('.subsectionBar').hide();
+
+    var alreadyActive = false;
+
+    if($(this).attr('id') !== activeSubsection){
+      activeSubsection = $(this).attr('id');
+      $('#' + $(this).attr('id')).show();
+      d3.select(this).style('height', '200px')
+      d3.select('#' + this.id.slice(0, -2) + 'QuestionSet').selectAll('.subsectionQuestions')
+        .data(function(d){
+          return d.sectionData
+        })
+        .enter()
+          .append('div')
+          .text(function(d){
+            return d.q
+          })
+          .style('height', '50px')
+          .classed('question', true)
+      d3.selectAll('.questionSet')
+        .style('border-top', '3px solid rgb(255,96,0)')
+    }else{
+      d3.selectAll('.questionSet')
+        .html('')
+        .style('border-top', '')
+      d3.select(this).style('height', '20px')
+      activeSubsection = '';
+      $('.subsectionBar').show();
+    }
+}
+
+
 var activeSubsection;
 function createSubsections(rowId){
 
@@ -164,35 +198,7 @@ function createSubsections(rowId){
 
   d3.selectAll('.subsectionBar')
   .on('click', function(){
-    $('.subsectionBar').hide();
-
-    var alreadyActive = false;
-
-    if($(this).attr('id') !== activeSubsection){
-      activeSubsection = $(this).attr('id');
-      $('#' + $(this).attr('id')).show();
-      d3.select(this).style('height', '200px')
-      d3.select('#' + this.id.slice(0, -2) + 'QuestionSet').selectAll('.subsectionQuestions')
-        .data(function(d){
-          return d.sectionData
-        })
-        .enter()
-          .append('div')
-          .text(function(d){
-            return d.q
-          })
-          .style('height', '50px')
-          .classed('question', true)
-      d3.selectAll('.questionSet')
-        .style('border-top', '3px solid rgb(255,96,0)')
-    }else{
-      d3.selectAll('.questionSet')
-        .html('')
-        .style('border-top', '')
-      d3.select(this).style('height', '20px')
-      activeSubsection = '';
-      $('.subsectionBar').show();
-    }
+    createQuestionSet.call(this)
   })
 }
 
