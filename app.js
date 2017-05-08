@@ -137,8 +137,10 @@ function createChart(){
 var activeSubsection;
 function createSubsections(rowId){
 
+  var activeSubset = subsectionData[rowId.slice(0, -3) + 'Questions'];
+
   d3.select('.activeRow').selectAll('.subsectionBar')
-      .data(subsectionData[rowId.slice(0, -3) + 'Questions'])
+      .data(activeSubset)
       .enter()
         .append('text')
         .html(function(d){
@@ -147,14 +149,33 @@ function createSubsections(rowId){
         .attr('id', function(d){
           return (d.questionSet.split(' ').join('') + 'Id')
         })
-        .style('height', '200px')
+        .style('height', '20px')
         .style('width', '50%')
         .style('position', 'relative')
         .classed('subsectionBar', true)
           .append('div')
           .style('max-height', '100%')
           .style('overflow', 'auto')
-          .selectAll('.subsectionQuestions')
+          .classed('questionSet', true)
+          .attr('id', function(d, i){
+            return d.questionSet.split(' ').join('') + 'QuestionSet'
+          })
+          
+
+  d3.selectAll('.subsectionBar')
+    .style('display')
+
+  d3.selectAll('.subsectionBar')
+  .on('click', function(){
+    $('.subsectionBar').hide();
+
+    var alreadyActive = false;
+
+    if($(this).attr('id') !== activeSubsection){
+      activeSubsection = $(this).attr('id');
+      $('#' + $(this).attr('id')).show();
+      d3.select(this).style('height', '200px')
+      d3.select('#' + this.id.slice(0, -2) + 'QuestionSet').selectAll('.subsectionQuestions')
             .data(function(d){
               return d.sectionData
             })
@@ -163,37 +184,12 @@ function createSubsections(rowId){
               .text(function(d){
                 return d.q
               })
-        
-        // .classed('subsectionBar', true)
-        //       .append('div')
               .style('height', '50px')
-
-
-              
-          // .selectAll('.subsectionQuestionContainers')
-          //   .data(function(d){
-          //     return d.sectionData
-          //   })
-          //   .enter()
-          //     .append('div')
-          //     .text(function(d){
-          //       return d.q
-          //     })
-
-  // d3.selectAll('.subsectionBar')
-  // .on('click', function(){
-  //   $('.subsectionBar').hide();
-
-  //   var alreadyActive = false;
-
-  //   if($(this).attr('id') !== activeSubsection){
-  //     activeSubsection = $(this).attr('id');
-  //     $('#' + $(this).attr('id')).show();
-  //   }else{
-  //     activeSubsection = '';
-  //     $('.subsectionBar').show();
-  //   }
-  // })
+    }else{
+      activeSubsection = '';
+      $('.subsectionBar').show();
+    }
+  })
 }
 
 var activeRowId;
