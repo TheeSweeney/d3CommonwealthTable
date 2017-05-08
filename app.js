@@ -2,7 +2,7 @@ $( document ).ready(function(){
 
 
 var w = 400;
-var h = 225;
+var h = 250;
 var margin = {
   top: 20,
   bottom: 20,
@@ -106,6 +106,11 @@ function createChart(dataSet){
           .enter()
             .append('text')
             .classed('barLabel', true)
+    this.selectAll('.percentage')
+          .data(params.data)
+          .enter()
+            .append('text')
+            .classed('percentage', true)
     //update
     this.selectAll('.bar')
             .transition()
@@ -122,9 +127,18 @@ function createChart(dataSet){
             .attr('width', function(d,i){
               return x.rangeBand() - 2;
             })
+    this.selectAll('.percentage')
+        .attr('x', function(d,i){
+          return x(d.country) + 4;
+        })
+        .attr('y', function(d,i){
+          return y(d.value) + 15;
+        })
+        .text(function(d,i){
+          return (d.value + '%')
+        })
     this.selectAll('.barLabel')
         .attr('x', function(d,i){
-          console.log(d.country.length)
               var bump = 0;
               if(d.country.length === 2){
                 bump = 10;
@@ -213,7 +227,7 @@ function createSubsections(rowId){
         .style('position', 'relative')
         .classed('subsectionBar', true)
           .append('div')
-          .style('max-height', '100%')
+          .style('max-height', '90%')
           .style('overflow', 'auto')
           .classed('questionSet', true)
           .attr('id', function(d, i){
