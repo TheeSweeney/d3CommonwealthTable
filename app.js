@@ -148,16 +148,25 @@ function createSubsections(rowId){
           return (d.questionSet.split(' ').join('') + 'Id')
         })
         .classed('subsectionBar', true)
-          .append('select')
-          .selectAll('.subsectionQuestions')
-            .data(function(d){
-              return d.sectionData
-            })
-            .enter()
-              .append('option')
-              .text(function(d){
-                return d.q
-              })
+          .append('div')
+          .style('height', '400px')
+          .style('width', '100%')
+          .style('position', 'relative')
+            .append('div')
+            .style('max-height', '100%')
+            .style('overflow', 'auto')
+              .append('div')
+              .style('height', '1500px')
+              
+          // .selectAll('.subsectionQuestionContainers')
+          //   .data(function(d){
+          //     return d.sectionData
+          //   })
+          //   .enter()
+          //     .append('div')
+          //     .text(function(d){
+          //       return d.q
+          //     })
 
   // d3.selectAll('.subsectionBar')
   // .on('click', function(){
