@@ -7,6 +7,9 @@ body,html{
 	display: flex;
 	justify-content: center;
 }
+table {
+	width: 945px;
+}
 .leftAlign {
 	text-align: left;
 }

@@ -186,6 +186,8 @@ function createSubsections(rowId){
               })
               .style('height', '50px')
     }else{
+      d3.selectAll('.questionSet').html('')
+      d3.select(this).style('height', '20px')
       activeSubsection = '';
       $('.subsectionBar').show();
     }
