@@ -12,15 +12,10 @@ var margin = {
 var width = w - margin.left - margin.right;
 var height = h - margin.top - margin.bottom;
 
-var linearColorScale = d3.scale.linear()
-                        .domain([0, 10])
-                        .range(['#dbf2f2','#044c7f']);
-
 var createTable = function(params){
     d3.select("#d3TableContainer")
         .append("table")
         .style("border-collapse", "collapse")
-        
         .selectAll("tr")
         .data(params.data)
         .enter()
@@ -106,8 +101,15 @@ function createChart(dataSet){
           .enter()
             .append('rect')
             .classed('bar', true)
+    this.selectAll('.barLabel')
+          .data(params.data)
+          .enter()
+            .append('text')
+            .classed('barLabel', true)
     //update
     this.selectAll('.bar')
+            .transition()
+            .duration(500)
             .attr('x', function(d,i){
               return x(d.country)
             })
@@ -118,11 +120,23 @@ function createChart(dataSet){
               return height - y(d.value)
             })
             .attr('width', function(d,i){
-              return x.rangeBand();
+              return x.rangeBand() - 2;
             })
-            .attr('fill', function(d,i){
-              return linearColorScale(i)
+    this.selectAll('.barLabel')
+        .attr('x', function(d,i){
+          console.log(d.country.length)
+              var bump = 0;
+              if(d.country.length === 2){
+                bump = 10;
+              }else if(d.country.length === 3){
+                bump = 2;
+              }
+              return x(d.country) + bump
             })
+        .attr('y', height + 15)
+        .text(function(d,i){
+          return d.country
+        })
   }
 
   plot.call(chart,{
@@ -245,8 +259,13 @@ d3.selectAll('.odd')
       opentChart.call(this)
     })
 
-
-
-
-
 })
+
+
+
+
+
+
+
+
+

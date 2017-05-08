@@ -523,20 +523,6 @@ var subsectionData = {
   ]
 }
 
-// [
-
-//  {
-//    'q': "Coordinated Care",
-
- 
-//  {
-//    'q': "Engagement and Patient Preference",
-           
-// ]
-
-
-
-
 
 
 

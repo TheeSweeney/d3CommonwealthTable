@@ -36,6 +36,12 @@ table {
 	background-color: white;
 }
 
+.bar {
+	fill: rgb(255,95,0);
+}
+
+
+
 #blank0{
 	display: none;
 }
