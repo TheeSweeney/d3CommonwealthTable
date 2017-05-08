@@ -70,7 +70,7 @@ createTable({
     data: tableData
 })
 
-function createChart(){
+function createChart(dataSet){
 
   d3.select("#chart").remove();
 
@@ -82,12 +82,12 @@ function createChart(){
         .classed("display", true)
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   var x = d3.scale.ordinal()
-            .domain(subsectionData['QualityQuestions'][0].sectionData[0].data.map(function(entry){
+            .domain(dataSet.map(function(entry){
               return entry.country;
             }))
             .rangeBands([0, width])
   var y = d3.scale.linear()
-            .domain([0, d3.max(subsectionData['QualityQuestions'][0].sectionData[0].data, function(d){
+            .domain([0, d3.max(dataSet, function(d){
               return d.value
             })])
             .range([height, 0])
@@ -126,13 +126,19 @@ function createChart(){
   }
 
   plot.call(chart,{
-    data:subsectionData['QualityQuestions'][0].sectionData[0].data,
+    data: dataSet,
     axes: {
       x: x,
       y: y
     }
   });
 
+}
+
+function questionClick(data){
+ console.log(data)
+ console.log(subsectionData['QualityQuestions'][0].sectionData[0].data)
+ createChart(data);
 }
 
 function createQuestionSet(){
@@ -155,6 +161,11 @@ function createQuestionSet(){
           })
           .style('height', '50px')
           .classed('question', true)
+          .on('click', function(d){
+            questionClick.call(this, d.data)
+          })
+
+
       d3.selectAll('.questionSet')
         .style('border-top', '3px solid rgb(255,96,0)')
     }else{
@@ -227,8 +238,6 @@ function opentChart(data){
       }
 
       createSubsections.call(this, rowId);
-
-      createChart();
 }
 
 d3.selectAll('.odd')
