@@ -147,16 +147,28 @@ function createSubsections(rowId){
         .attr('id', function(d){
           return (d.questionSet.split(' ').join('') + 'Id')
         })
+        .style('height', '200px')
+        .style('width', '50%')
+        .style('position', 'relative')
         .classed('subsectionBar', true)
           .append('div')
-          .style('height', '400px')
-          .style('width', '100%')
-          .style('position', 'relative')
-            .append('div')
-            .style('max-height', '100%')
-            .style('overflow', 'auto')
+          .style('max-height', '100%')
+          .style('overflow', 'auto')
+          .selectAll('.subsectionQuestions')
+            .data(function(d){
+              return d.sectionData
+            })
+            .enter()
               .append('div')
-              .style('height', '1500px')
+              .text(function(d){
+                return d.q
+              })
+        
+        // .classed('subsectionBar', true)
+        //       .append('div')
+              .style('height', '50px')
+
+
               
           // .selectAll('.subsectionQuestionContainers')
           //   .data(function(d){
