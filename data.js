@@ -14,7 +14,6 @@ var tableData = [
     ['   '],
     ['Health Care Outcomes',1,9,5,8,6,7,3,2,4,10,11],
     ['   '],
-    ['Health Spending per Capita*',"$4,207","$4,724","$4,620","$5,119","$5,277","$4,038","$6,432","$5,306","$6,787","$4,094","$9,364"]
 ]
 
 var subsectionData = {
@@ -890,8 +889,125 @@ var subsectionData = {
         }
       ]
     }
+  ],
+  HealthCareOutcomes:[
+    {
+      questionSet: 'Population Health',
+      sectionData: [
+        {
+          'q': "Infant mortality, deaths per 1,000 live births",
+            data: [
+              {country: "AUS", value: 3.4},
+              {country: "CAN", value: 4.8},
+              {country: "FRA", value: 3.5},
+              {country: "GER", value: 3.2},
+              {country: "NETH", value: 3.6},
+              {country: "NZ", value: 4.7},
+              {country: "NOR", value: 2.4},
+              {country: "SWE", value: 2.2},
+              {country: "SWIZ", value: 3.9},
+              {country: "UK", value: 3.9},
+              {country: "US", value: 6}
+            ]
+        },
+        {
+          'q': "Adults age 18 to 64 with at least two of five common chronic conditions",
+            data: [
+              {country: "AUS", value: 10},
+              {country: "CAN", value: 16},
+              {country: "FRA", value: 12},
+              {country: "GER", value: 8},
+              {country: "NETH", value: 9},
+              {country: "NZ", value: 9},
+              {country: "NOR", value: 12},
+              {country: "SWE", value: 10},
+              {country: "SWIZ", value: 10},
+              {country: "UK", value: 10},
+              {country: "US", value: 21}
+            ]
+        },
+        {
+          'q': "Life expectancy at age 60 in years",
+            data: [
+              {country: "AUS", value: 25.5},
+              {country: "CAN", value: 25},
+              {country: "FRA", value: 25.7},
+              {country: "GER", value: 23.7},
+              {country: "NETH", value: 24.2},
+              {country: "NZ", value: 24.7},
+              {country: "NOR", value: 24.2},
+              {country: "SWE", value: 24.6},
+              {country: "SWIZ", value: 25.5},
+              {country: "UK", value: 24.1},
+              {country: "US", value: 23.6}
+            ]
+        },
+      ]
+    },
+    {
+      questionSet: 'Mortality amenable to health care',
+      sectionData: [
+        {
+          'q': "30 day in-hospital mortality rate following acute myocardial infarction, deaths per 100 patients",
+          data: [
+            {country: "AUS", value: 4.1},
+            {country: "CAN", value: 6.7},
+            {country: "FRA", value: 7.2},
+            {country: "GER", value: 8.7},
+            {country: "NETH", value: 7.6},
+            {country: "NZ", value: 6.6},
+            {country: "NOR", value: 6.7},
+            {country: "SWE", value: 4.5},
+            {country: "SWIZ", value: 7.7},
+            {country: "UK", value: 7.6},
+            {country: "US", value: 5.5}
+          ]
+        },
+        {
+          'q': "30 day in-hospital mortality rate following ischemic stroke, deaths per 100 patients",
+          data: [
+            {country: "AUS", value: 9.3},
+            {country: "CAN", value: 10},
+            {country: "FRA", value: 7.9},
+            {country: "GER", value: 6.4},
+            {country: "NETH", value: 7.1},
+            {country: "NZ", value: 8},
+            {country: "NOR", value: 5.4},
+            {country: "SWE", value: 6.4},
+            {country: "SWIZ", value: 6.9},
+            {country: "UK", value: 9.2},
+            {country: "US", value: 3.6}
+          ]
+        },
+      ]
+    },
   ]
 }
 
+//Template
+
+// QualityQuestions: [
+//   {
+//     questionSet: "Preventative Care Measures",
+//     sectionData: [
+//       {
+//         'q': "Talked with provider about things in life that cause worry or stress in the past two years, among those with a history of mental illness",
+//         data:[
+//           {country: "AUS", value: 74},
+//           {country: "CAN", value: 63},
+//           {country: "FRA", value: 0},
+//           {country: "GER", value: 46},
+//           {country: "NETH", value: 62},
+//           {country: "NZ", value: 67},
+//           {country: "NOR", value: 62},
+//           {country: "SWE", value: 58},
+//           {country: "SWIZ", value: 72},
+//           {country: "UK", value: 58},
+//           {country: "US", value: 64},
+//         ],
+//       },
+//     ]
+//   }
+// 
 
 
