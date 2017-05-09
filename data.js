@@ -890,7 +890,7 @@ var subsectionData = {
       ]
     }
   ],
-  HealthCareOutcomes:[
+  HealthCareOutcomesQuestions:[
     {
       questionSet: 'Population Health',
       sectionData: [
