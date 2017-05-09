@@ -329,11 +329,13 @@ function openSubsection(data){
 
 d3.selectAll('.odd')
     .on('click', function(){
-      openSubsection.call(this)
-      d3.selectAll('.subsectionBar')
-        .style('opacity', 1)
+      var id = d3.select(this).attr('id');
+      if(id !== 'OVERALLRANKINGRow' && id !== 'headerRow'){
+        openSubsection.call(this)
+        d3.selectAll('.subsectionBar')
+          .style('opacity', 1)
+      }
     })
-
 })
 
 
