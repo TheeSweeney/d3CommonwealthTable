@@ -107,6 +107,11 @@ function createChart(dataSet){
           .enter()
             .append('text')
             .classed('percentage', true)
+    this.selectAll('.noData')
+      .data(params.data)
+      .enter()
+        .append('text')
+        .classed('noData', true)
     //update
     this.selectAll('.bar')
             .transition()
@@ -125,13 +130,26 @@ function createChart(dataSet){
             })
     this.selectAll('.percentage')
         .attr('x', function(d,i){
-          return x(d.country) + 4;
+          return d.value === 0 ? x(d.country) + 2 : x(d.country) + 4;
         })
         .attr('y', function(d,i){
-          return y(d.value) + 15;
+          return d.value === 0 ? y(d.value) : (y(d.value) + 15);
         })
         .text(function(d,i){
-          return (d.value + '%')
+          return d.value === 0 ? 'Data' : (d.value + '%');
+        })
+        .attr('fill', function(d,i){
+          return d.value === 0 ? 'black' : 'white';
+        })
+     this.selectAll('.noData')
+        .attr('x', function(d,i){
+          return x(d.country) + 8;
+        })
+        .attr('y', function(d,i){
+          return y(d.value) - 15;
+        })
+        .text(function(d,i){
+          return d.value === 0 ? 'No' : '';
         })
     this.selectAll('.barLabel')
         .attr('x', function(d,i){
