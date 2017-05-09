@@ -1,11 +1,11 @@
 $( document ).ready(function(){
 
 
-var w = 400;
+var w = 432;
 var h = 250;
 var margin = {
   top: 20,
-  bottom: 20,
+  bottom: 25,
   left: 20,
   right: 20
 };
@@ -126,7 +126,7 @@ function createChart(dataSet){
               return height - y(d.value)
             })
             .attr('width', function(d,i){
-              return x.rangeBand() - 2;
+              return x.rangeBand() - 3;
             })
     this.selectAll('.percentage')
         .attr('x', function(d,i){
@@ -143,7 +143,7 @@ function createChart(dataSet){
         })
      this.selectAll('.noData')
         .attr('x', function(d,i){
-          return x(d.country) + 8;
+          return x(d.country) + 7;
         })
         .attr('y', function(d,i){
           return y(d.value) - 15;
@@ -153,11 +153,11 @@ function createChart(dataSet){
         })
     this.selectAll('.barLabel')
         .attr('x', function(d,i){
-              var bump = 0;
+              var bump = 1;
               if(d.country.length === 2){
                 bump = 10;
               }else if(d.country.length === 3){
-                bump = 2;
+                bump = 3;
               }
               return x(d.country) + bump
             })
@@ -276,6 +276,20 @@ function createSubsections(rowId){
         .attr('id', function(d, i){
           return d.questionSet.split(' ').join('') + 'QuestionSet'
         })
+  d3.select('.activeRow')
+    .append('g')
+    .attr('id', 'traingleGroup')
+  d3.select('#traingleGroup').selectAll('.triangle')
+    .data(activeSubset)
+    .enter()
+      .append('path')
+      .attr('d', function(d){
+        return 'M 22,40 42,40 32,22 z';
+      })
+      .attr('transform', 'translate(-35,-35)')
+      .style('fill', '#4ABDBC')
+      .attr('x', 30)
+      .attr('y', 30)
           
 
   d3.selectAll('.subsectionBar')
