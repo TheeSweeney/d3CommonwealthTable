@@ -48,7 +48,7 @@ var createTable = function(params){
         .text(function(d){
           return d;
         })
-        .style("font-size", "12px")
+        .style("font-size", "16px")
         .classed('leftAlign', function(d){
           if(d.length > 4) return true;
         })

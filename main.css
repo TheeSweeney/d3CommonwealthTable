@@ -2,7 +2,6 @@ body,html{
 	margin: 0;
 	padding: 0;
 	font-family: "Arial", sans-serif;
-	font-size: 0.95em;
 	text-align: center;
 	display: flex;
 	justify-content: center;
@@ -13,6 +12,10 @@ table {
 }
 .leftAlign {
 	text-align: left;
+}
+
+#d3TableContainer{
+	color: #808080;
 }
 
 #tableContainer{
