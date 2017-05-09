@@ -771,6 +771,127 @@ var subsectionData = {
         }
       ]
     }
+  ],
+  AdministrativeBurdenQuestions: [
+    {
+      questionSet: 'Administrative Efficiency',
+      sectionData: [
+        {
+          'q': "Doctors report time spent on administrative issues related to insurance or claims is a major problem",
+          data: [
+            {country: "AUS", value: 21},
+            {country: "CAN", value: 20},
+            {country: "FRA", value: 63},
+            {country: "GER", value: 52},
+            {country: "NETH", value: 60},
+            {country: "NZ", value: 20},
+            {country: "NOR", value: 9},
+            {country: "SWE", value: 27},
+            {country: "SWIZ", value: 50},
+            {country: "UK", value: 21},
+            {country: "US", value: 54}
+          ]
+        },
+        {
+          'q': "Doctors report time spent getting patients needed medications or treatment because of coverage restrictions is a major problem",
+          data: [
+            {country: "AUS", value: 11},
+            {country: "CAN", value: 21},
+            {country: "FRA", value: 27},
+            {country: "GER", value: 38},
+            {country: "NETH", value: 32},
+            {country: "NZ", value: 12},
+            {country: "NOR", value: 6},
+            {country: "SWE", value: 6},
+            {country: "SWIZ", value: 14},
+            {country: "UK", value: 15},
+            {country: "US", value: 54}
+          ]
+        },
+        {
+          'q': "Doctors report time spent on issues related to reporting clinical or quality data to government or other agencies is a major problem",
+          data: [
+            {country: "AUS", value: 8},
+            {country: "CAN", value: 10},
+            {country: "FRA", value: 43},
+            {country: "GER", value: 23},
+            {country: "NETH", value: 51},
+            {country: "NZ", value: 16},
+            {country: "NOR", value: 13},
+            {country: "SWE", value: 25},
+            {country: "SWIZ", value: 33},
+            {country: "UK", value: 22},
+            {country: "US", value: 33}
+          ]
+        },
+        {
+          'q': "Visited ED for a condition that could have been treated by a regular doctor, had he/she been available",
+          data: [
+            {country: "AUS", value: 6},
+            {country: "CAN", value: 17},
+            {country: "FRA", value: 7},
+            {country: "GER", value: 5},
+            {country: "NETH", value: 6},
+            {country: "NZ", value: 7},
+            {country: "NOR", value: 11},
+            {country: "SWE", value: 12},
+            {country: "SWIZ", value: 9},
+            {country: "UK", value: 7},
+            {country: "US", value: 16}
+          ]
+        },
+        {
+          'q': "Tests results or medical records were not available at the time of patient's scheduled medical care appointment in the past two years",
+          data: [
+            {country: "AUS", value: 5},
+            {country: "CAN", value: 8},
+            {country: "FRA", value: 13},
+            {country: "GER", value: 6},
+            {country: "NETH", value: 5},
+            {country: "NZ", value: 7},
+            {country: "NOR", value: 7},
+            {country: "SWE", value: 8},
+            {country: "SWIZ", value: 6},
+            {country: "UK", value: 6},
+            {country: "US", value: 11}
+          ]
+        },
+        {
+          'q': "Doctors ordered a medical test that patient felt was unnecessary because the test had already been done in the past two years",
+          data: [
+            {country: "AUS", value: 6},
+            {country: "CAN", value: 6},
+            {country: "FRA", value: 20},
+            {country: "GER", value: 6},
+            {country: "NETH", value: 3},
+            {country: "NZ", value: 4},
+            {country: "NOR", value: 6},
+            {country: "SWE", value: 5},
+            {country: "SWIZ", value: 9},
+            {country: "UK", value: 5},
+            {country: "US", value: 11}
+          ]
+        },
+        {
+          'q': "Spent a lot of time on paperwork or disputes related to medical bills",
+          data: [
+            {country: "AUS", value: 5},
+            {country: "CAN", value: 5},
+            {country: "FRA", value: 28},
+            {country: "GER", value: 5},
+            {country: "NETH", value: 8},
+            {country: "NZ", value: 3},
+            {country: "NOR", value: 5},
+            {country: "SWE", value: 3},
+            {country: "SWIZ", value: 11},
+            {country: "UK", value: 0},
+            {country: "US", value: 16}
+          ]
+        }
+      ]
+    }
   ]
 }
+
+
 
