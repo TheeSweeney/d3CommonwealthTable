@@ -192,6 +192,7 @@ function questionClick(d){
     .html(function(){
       return d.q;
     })
+    .classed('selectedQuestion', true)
   d3.selectAll('.subsectionBar')
     .style('opacity', function(d,i){
       return (d.questionSet.split(' ').join('') + 'Id') === activeSubsection ? 1 : .3;

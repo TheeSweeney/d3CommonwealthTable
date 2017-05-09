@@ -34,6 +34,7 @@ table {
 	border: 1px solid #CCC;
 	float: right;
 	background-color: white;
+	margin-right: 32px;
 }
 
 .bar {
@@ -81,3 +82,14 @@ table {
 .question:hover {
 	background-color: rgb(254,242,232);
 }
+
+.selectedQuestion {
+	color: rgb(238,123,59);
+	font-size: 15px;
+}
+
+
+
+
+
+
