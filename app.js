@@ -275,7 +275,7 @@ function createSubsections(rowId){
 }
 
 var activeRowId;
-function openChart(data){
+function openSubsection(data){
   var alreadyActive = false;
   if($(this).attr('id') === activeRowId) alreadyActive = true;
   
@@ -303,7 +303,9 @@ function openChart(data){
 
 d3.selectAll('.odd')
     .on('click', function(){
-      openChart.call(this)
+      openSubsection.call(this)
+      d3.selectAll('.subsectionBar')
+        .style('opacity', 1)
     })
 
 })
