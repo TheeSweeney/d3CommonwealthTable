@@ -270,6 +270,7 @@ function createSubsections(rowId){
   d3.selectAll('.subsectionBar')
     .on('click', function(){
       createQuestionSet.call(this)
+      d3.select(this).style('opacity', 1)
     })
 }
 
