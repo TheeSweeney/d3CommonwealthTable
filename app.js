@@ -235,19 +235,12 @@ function createQuestionSet(){
         .on('click', function(d){
           questionClick.call(this, d)
         })
-    d3.selectAll('.subsectionBar')
-        .append('path')
-        .attr('d', function(){
-          return 'M 22,40 42,40 32,22 z';
-        })
-        .attr('transform', 'translate(-35,-35)')
-        .style('fill', '#4ABDBC')
-        .attr('x', 5)
-        .attr('y', 5)
 
 
     d3.selectAll('.questionSet')
-      .style('border-top', '3px solid rgb(255,96,0)')
+      .style('border-top', function(){
+        if(d3.select(this).attr('id').slice(0,-11) === activeSubsection.slice(0,-2)) return '3px solid rgb(255,96,0)'
+      })
   }else{
     d3.selectAll('.questionSet')
       .html('')
