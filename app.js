@@ -181,6 +181,8 @@ var activeQuestion;
 
 function questionClick(d){
 
+  d3.select('.selectedQuestion').remove()
+
   var questionId = d.q.split(' ').join('') + 'Id'
   activeQuestion = questionId;
 
