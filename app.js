@@ -204,14 +204,23 @@ function questionClick(d){
 }
 
 function createQuestionSet(){
-  $('.subsectionBar').hide();
 
   var alreadyActive = false;
+  var subSectionPassed = false;
 
   if($(this).attr('id') !== activeSubsection){
     activeSubsection = $(this).attr('id');
+    
+    d3.selectAll('.subsectionBar')
+      .style('display', function(){
+        var display = subSectionPassed ? 'none' : 'initial';
+        if (d3.select(this).attr('id') === activeSubsection) subSectionPassed = true
+        return display
+      });
     $('#' + $(this).attr('id')).show();
+    
     d3.select(this).style('height', '200px')
+    
     d3.select('#' + this.id.slice(0, -2) + 'QuestionSet').selectAll('.subsectionQuestions')
       .data(function(d){
         return d.sectionData
@@ -226,6 +235,15 @@ function createQuestionSet(){
         .on('click', function(d){
           questionClick.call(this, d)
         })
+    d3.selectAll('.subsectionBar')
+        .append('path')
+        .attr('d', function(){
+          return 'M 22,40 42,40 32,22 z';
+        })
+        .attr('transform', 'translate(-35,-35)')
+        .style('fill', '#4ABDBC')
+        .attr('x', 5)
+        .attr('y', 5)
 
 
     d3.selectAll('.questionSet')
@@ -271,6 +289,7 @@ function createSubsections(rowId){
     .on('click', function(){
       createQuestionSet.call(this)
       d3.select(this).style('opacity', 1)
+
     })
 }
 

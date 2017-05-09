@@ -6,6 +6,7 @@ body,html{
 	text-align: center;
 	display: flex;
 	justify-content: center;
+	cursor: default;
 }
 table {
 	width: 945px;
