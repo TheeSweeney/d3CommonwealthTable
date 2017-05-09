@@ -185,7 +185,7 @@ function questionClick(d){
   activeQuestion = questionId;
 
   var activeSubsectionPassed = false;
-  d3.select("#" + activeSubsection)
+  d3.select(".activeRow")
     .append('text')
     .attr('id', function(){
       return questionId;
@@ -274,7 +274,7 @@ function createSubsections(rowId){
 }
 
 var activeRowId;
-function opentChart(data){
+function openChart(data){
   var alreadyActive = false;
   if($(this).attr('id') === activeRowId) alreadyActive = true;
   
@@ -302,7 +302,7 @@ function opentChart(data){
 
 d3.selectAll('.odd')
     .on('click', function(){
-      opentChart.call(this)
+      openChart.call(this)
     })
 
 })
