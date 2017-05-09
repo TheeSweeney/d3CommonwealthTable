@@ -184,7 +184,6 @@ function questionClick(d){
   var questionId = d.q.split(' ').join('') + 'Id'
   activeQuestion = questionId;
 
-  var activeSubsectionPassed = false;
   d3.select(".activeRow")
     .append('text')
     .attr('id', function(){
@@ -194,10 +193,8 @@ function questionClick(d){
       return d.q;
     })
   d3.selectAll('.subsectionBar')
-    .style('top', function(d,i){
-      var top = activeSubsectionPassed ? '50px' : '';
-      if(d3.select(this).attr('id') === activeSubsection) activeSubsectionPassed = true  
-      return top;
+    .style('opacity', function(d,i){
+      return (d.questionSet.split(' ').join('') + 'Id') === activeSubsection ? 1 : .3;
     })
 
   createChart(d.data);
