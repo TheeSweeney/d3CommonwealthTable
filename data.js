@@ -17,23 +17,6 @@ var tableData = [
     ['Health Spending per Capita*',"$4,207","$4,724","$4,620","$5,119","$5,277","$4,038","$6,432","$5,306","$6,787","$4,094","$9,364"]
 ]
 
-
-
-var barData = [
-  {key: "Glazed",   value: 132},
-  {key: "Jelly",    value: 71},
-  {key: "Holes",    value: 200},
-  {key: "Sprinkles",  value: 93},
-  {key: "Crumb",    value: 78},
-  {key: "Chocolate",  value: 43},
-  {key: "Coconut",  value: 20},
-  {key: "Cream",    value: 16},
-  {key: "Cruller",  value: 30},
-  {key: "Éclair",   value: 8},
-  {key: "Fritter",  value: 17},
-  {key: "Bearclaw",   value: 21}
-];
-
 var subsectionData = {
   QualityQuestions: [
     {
@@ -520,44 +503,274 @@ var subsectionData = {
        }
       ]
     }
+  ], 
+  AccessQuestions: [
+    {
+      questionSet: 'Affordability',
+      sectionData: [
+        {
+          q: "Had any cost-related access problem to medical care in the past year",
+          data:[
+            {country: 'AUS', value: 14},
+            {country: 'CAN', value: 16},
+            {country: 'FRA', value: 17},
+            {country: 'GER', value: 7},
+            {country: 'NETH', value: 8},
+            {country: 'NZ', value: 18},
+            {country: 'NOR', value: 10},
+            {country: 'SWE', value: 8},
+            {country: 'SWIZ', value: 22},
+            {country: 'UK', value: 7},
+            {country: 'US', value: 33}
+          ]
+        },
+        {
+          q: "Skipped dental care or check up because of cost in the past year",
+          data:[
+            {country: 'AUS', value: 21},
+            {country: 'CAN', value: 28},
+            {country: 'FRA', value: 23},
+            {country: 'GER', value: 14},
+            {country: 'NETH', value: 11},
+            {country: 'NZ', value: 22},
+            {country: 'NOR', value: 20},
+            {country: 'SWE', value: 19},
+            {country: 'SWIZ', value: 21},
+            {country: 'UK', value: 11},
+            {country: 'US', value: 32}
+          ]
+        },
+        {
+          q: "Insurance denied payment for medical care or did not pay as much as expected",
+          data:[
+            {country: 'AUS', value: 9},
+            {country: 'CAN', value: 14},
+            {country: 'FRA', value: 24},
+            {country: 'GER', value: 8},
+            {country: 'NETH', value: 8},
+            {country: 'NZ', value: 2},
+            {country: 'NOR', value: 2},
+            {country: 'SWE', value: 2},
+            {country: 'SWIZ', value: 12},
+            {country: 'UK', value: 1},
+            {country: 'US', value: 27}
+          ]
+        },
+        {
+          q: "Had serious problems paying or was unable to pay medical bills",
+          data:[
+            {country: 'AUS', value: 5},
+            {country: 'CAN', value: 6},
+            {country: 'FRA', value: 23},
+            {country: 'GER', value: 4},
+            {country: 'NETH', value: 7},
+            {country: 'NZ', value: 5},
+            {country: 'NOR', value: 8},
+            {country: 'SWE', value: 5},
+            {country: 'SWIZ', value: 11},
+            {country: 'UK', value: 1},
+            {country: 'US', value: 20}
+          ]
+        },
+        {
+          q: "Doctors report patients often have difficulty paying for medications or out-of-pocket costs",
+          data:[
+            {country: 'AUS', value: 25},
+            {country: 'CAN', value: 30},
+            {country: 'FRA', value: 17},
+            {country: 'GER', value: 13},
+            {country: 'NETH', value: 52},
+            {country: 'NZ', value: 30},
+            {country: 'NOR', value: 3},
+            {country: 'SWE', value: 6},
+            {country: 'SWIZ', value: 9},
+            {country: 'UK', value: 12},
+            {country: 'US', value: 60}
+          ]
+        },
+        {
+          q: "Out-of-pocket expenses for medical bills more than $1,000 in the past year, US$ equivalent",
+          data:[
+            {country: 'AUS', value: 16},
+            {country: 'CAN', value: 15},
+            {country: 'FRA', value: 7},
+            {country: 'GER', value: 5},
+            {country: 'NETH', value: 7},
+            {country: 'NZ', value: 7},
+            {country: 'NOR', value: 13},
+            {country: 'SWE', value: 4},
+            {country: 'SWIZ', value: 46},
+            {country: 'UK', value: 4},
+            {country: 'US', value: 36}
+          ]
+        },
+      ]
+    },
+    {
+      questionSet: 'Timeliness',
+      sectionData: [
+        {
+          q: "Have a regular doctor or place",
+          data:[
+            {country: 'AUS', value: 94},
+            {country: 'CAN', value: 93},
+            {country: 'FRA', value: 99},
+            {country: 'GER', value: 99},
+            {country: 'NETH', value: 100},
+            {country: 'NZ', value: 96},
+            {country: 'NOR', value: 98},
+            {country: 'SWE', value: 92},
+            {country: 'SWIZ', value: 90},
+            {country: 'UK', value: 94},
+            {country: 'US', value: 88}
+          ]
+        },
+        {
+          q: "Regular doctor always or often answers the same day when contacted with question",
+          data:[
+            {country: 'AUS', value: 86},
+            {country: 'CAN', value: 66},
+            {country: 'FRA', value: 86},
+            {country: 'GER', value: 87},
+            {country: 'NETH', value: 87},
+            {country: 'NZ', value: 83},
+            {country: 'NOR', value: 76},
+            {country: 'SWE', value: 75},
+            {country: 'SWIZ', value: 88},
+            {country: 'UK', value: 78},
+            {country: 'US', value: 72}
+          ]
+        },
+        {
+          q: "Saw a doctor or nurse on the same or next day, last time they needed medical care",
+          data:[
+            {country: 'AUS', value: 67},
+            {country: 'CAN', value: 43},
+            {country: 'FRA', value: 56},
+            {country: 'GER', value: 53},
+            {country: 'NETH', value: 77},
+            {country: 'NZ', value: 76},
+            {country: 'NOR', value: 43},
+            {country: 'SWE', value: 49},
+            {country: 'SWIZ', value: 57},
+            {country: 'UK', value: 57},
+            {country: 'US', value: 51}
+          ]
+        },
+        {
+          q: "Somewhat or very difficult to obtain after-hours care",
+          data:[
+            {country: 'AUS', value: 44},
+            {country: 'CAN', value: 63},
+            {country: 'FRA', value: 64},
+            {country: 'GER', value: 64},
+            {country: 'NETH', value: 25},
+            {country: 'NZ', value: 44},
+            {country: 'NOR', value: 40},
+            {country: 'SWE', value: 64},
+            {country: 'SWIZ', value: 58},
+            {country: 'UK', value: 49},
+            {country: 'US', value: 51}
+          ]
+        },
+        {
+          q: "Waited two hours or more for care in emergency room",
+          data:[
+            {country: 'AUS', value: 23},
+            {country: 'CAN', value: 50},
+            {country: 'FRA', value: 9},
+            {country: 'GER', value: 18},
+            {country: 'NETH', value: 20},
+            {country: 'NZ', value: 30},
+            {country: 'NOR', value: 34},
+            {country: 'SWE', value: 39},
+            {country: 'SWIZ', value: 26},
+            {country: 'UK', value: 32},
+            {country: 'US', value: 25}
+          ]
+        },
+        {
+          q: "Doctors report patients often experience difficulty getting specialized tests (e.g., CT, MRI)",
+          data:[
+            {country: 'AUS', value: 11},
+            {country: 'CAN', value: 40},
+            {country: 'FRA', value: 54},
+            {country: 'GER', value: 27},
+            {country: 'NETH', value: 6},
+            {country: 'NZ', value: 54},
+            {country: 'NOR', value: 7},
+            {country: 'SWE', value: 15},
+            {country: 'SWIZ', value: 1},
+            {country: 'UK', value: 19},
+            {country: 'US', value: 29}
+          ]
+        },
+        {
+          q: "Doctors report patients often experience long wait times to receive treatment after diagnosis",
+          data:[
+            {country: 'AUS', value: 23},
+            {country: 'CAN', value: 21},
+            {country: 'FRA', value: 17},
+            {country: 'GER', value: 17},
+            {country: 'NETH', value: 10},
+            {country: 'NZ', value: 33},
+            {country: 'NOR', value: 18},
+            {country: 'SWE', value: 28},
+            {country: 'SWIZ', value: 1},
+            {country: 'UK', value: 31},
+            {country: 'US', value: 9}
+          ]
+        },
+        {
+          q: "Waited two months or longer for specialist appointment",
+          data:[
+            {country: 'AUS', value: 13},
+            {country: 'CAN', value: 30},
+            {country: 'FRA', value: 4},
+            {country: 'GER', value: 3},
+            {country: 'NETH', value: 7},
+            {country: 'NZ', value: 20},
+            {country: 'NOR', value: 28},
+            {country: 'SWE', value: 19},
+            {country: 'SWIZ', value: 9},
+            {country: 'UK', value: 19},
+            {country: 'US', value: 6}
+          ]
+        },
+        {
+          q: "Waited four month or longer for elective/non-emergency surgery",
+          data:[
+            {country: 'AUS', value: 8},
+            {country: 'CAN', value: 18},
+            {country: 'FRA', value: 2},
+            {country: 'GER', value: 0},
+            {country: 'NETH', value: 4},
+            {country: 'NZ', value: 15},
+            {country: 'NOR', value: 15},
+            {country: 'SWE', value: 12},
+            {country: 'SWIZ', value: 7},
+            {country: 'UK', value: 12},
+            {country: 'US', value: 4}
+          ]
+        },
+        {
+          q: "Practice has arrangement for patients to see doctor or nurse after hours without going to ED",
+          data:[
+            {country: 'AUS', value: 78},
+            {country: 'CAN', value: 48},
+            {country: 'FRA', value: 71},
+            {country: 'GER', value: 85},
+            {country: 'NETH', value: 94},
+            {country: 'NZ', value: 92},
+            {country: 'NOR', value: 80},
+            {country: 'SWE', value: 75},
+            {country: 'SWIZ', value: 69},
+            {country: 'UK', value: 89},
+            {country: 'US', value: 39}
+          ]
+        }
+      ]
+    }
   ]
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
