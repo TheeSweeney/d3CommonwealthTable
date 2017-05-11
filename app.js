@@ -65,14 +65,41 @@ var createTable = function(params){
 createTable({
     data: tableData
 })
+
+var initial = true;
 var svg;
 var chart;
 var x;
 var y;
 
-function plot(params){
+function createChart(dataSet){
 
+  // d3.select("#chart").remove();
+  if(initial){
+    svg = d3.select(".activeRow").append("svg")
+          .attr("id", "chart")
+          .attr("width", w)
+          .attr("height", h);
+    chart = svg.append("g")
+          .classed("display", true)
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+  }
+
+  x = d3.scale.ordinal()
+            .domain(dataSet.map(function(entry){
+              return entry.country;
+            }))
+            .rangeBands([0, width])
+  y = d3.scale.linear()
+            .domain([0, 100])
+            .range([height, 0])
+  
+
+  function plot(params){
     //enter
+
     this.selectAll('.bar')
           .data(params.data)
           .enter()
@@ -83,55 +110,59 @@ function plot(params){
           .enter()
             .append('text')
             .classed('barLabel', true)
+    if(!initial){
     this.selectAll('.percentage')
           .data(params.data)
           .enter()
             .append('text')
             .classed('percentage', true)
-    this.selectAll('.noData')
-      .data(params.data)
-      .enter()
-        .append('text')
-        .classed('noData', true)
+      this.selectAll('.noData')
+        .data(params.data)
+        .enter()
+          .append('text')
+          .classed('noData', true)
+    }
+    
     //update
-    this.selectAll('.bar')
-            .transition()
-            .duration(500)
-            .attr('x', function(d,i){
-              return x(d.country)
-            })
-            .attr('y', function(d,i){
-              return y(d.value);
-            })
-            .attr('height', function(d,i){
-              return height - y(d.value)
-            })
-            .attr('width', function(d,i){
-              return x.rangeBand() - 3;
-            })
-    this.selectAll('.percentage')
-        .attr('x', function(d,i){
-          return d.value === 0 ? x(d.country) + 2 : x(d.country) + 4;
-        })
-        .attr('y', function(d,i){
-          return d.value === 0 ? y(d.value) : (y(d.value) + 15);
-        })
-        .text(function(d,i){
-          return d.value === 0 ? 'Data' : (d.value + '%');
-        })
-        .attr('fill', function(d,i){
-          return d.value === 0 ? 'black' : 'white';
-        })
-     this.selectAll('.noData')
-        .attr('x', function(d,i){
-          return x(d.country) + 7;
-        })
-        .attr('y', function(d,i){
-          return y(d.value) - 15;
-        })
-        .text(function(d,i){
-          return d.value === 0 ? 'No' : '';
-        })
+      this.selectAll('.bar')
+              .transition()
+              .duration(500)
+              .attr('x', function(d,i){
+                return x(d.country)
+              })
+              .attr('y', function(d,i){
+                return y(d.value);
+              })
+              .attr('height', function(d,i){
+                return height - y(d.value)
+              })
+              .attr('width', function(d,i){
+                return x.rangeBand() - 3;
+              })
+      this.selectAll('.percentage')
+          .attr('x', function(d,i){
+            return d.value === 0 ? x(d.country) + 2 : x(d.country) + 4;
+          })
+          .attr('y', function(d,i){
+            return d.value === 0 ? y(d.value) : (y(d.value) + 15);
+          })
+          .text(function(d,i){
+            return d.value === 0 ? 'Data' : (d.value + '%');
+          })
+          .attr('fill', function(d,i){
+            return d.value === 0 ? 'black' : 'white';
+          })
+       this.selectAll('.noData')
+          .attr('x', function(d,i){
+            return x(d.country) + 7;
+          })
+          .attr('y', function(d,i){
+            return y(d.value) - 15;
+          })
+          .text(function(d,i){
+            return d.value === 0 ? 'No' : '';
+          })
+    
     this.selectAll('.barLabel')
         .attr('x', function(d,i){
               var bump = 1;
@@ -148,33 +179,6 @@ function plot(params){
         })
   }
 
-
-function createChart(dataSet){
-  
-  // d3.select("#chart").remove();
-
-  svg = d3.select(".activeRow").append("svg")
-        .attr("id", "chart")
-        .attr("width", w)
-        .attr("height", h);
-  chart = svg.append("g")
-        .classed("display", true)
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  x = d3.scale.ordinal()
-            .domain(dataSet.map(function(entry){
-              return entry.country;
-            }))
-            .rangeBands([0, width])
-  y = d3.scale.linear()
-            .domain([0, d3.max(dataSet, function(d){
-              return d.value
-            })])
-            .range([height, 0])
-
-  
-
-  
-
   plot.call(chart,{
     data: dataSet,
     axes: {
@@ -183,11 +187,11 @@ function createChart(dataSet){
     }
   });
 
+    initial = false;
+
 }
 
 var activeQuestion;
-    var a = true;
-
 
 function questionClick(d){
 
@@ -209,20 +213,8 @@ function questionClick(d){
     .style('opacity', function(d,i){
       return (d.questionSet.split(' ').join('') + 'Id') === activeSubsection ? 1 : .3;
     })
-    if(a){
-      createChart(d.data);
-      a = false
-    }else{
-      console.log('here')
-      plot.call(chart, {
-        data: d.data,
-        axes: {
-          x: x,
-          y: y
-        }
-      })
-    }
 
+  createChart(d.data);
 }
 
 function createQuestionSet(){
@@ -318,8 +310,10 @@ function createSubsections(rowId){
     .on('click', function(){
       createQuestionSet.call(this)
       d3.select(this).style('opacity', 1)
-
     })
+
+    createChart(subsectionData.emptyChart)
+
 }
 
 var activeRowId;

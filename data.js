@@ -17,6 +17,19 @@ var tableData = [
 ]
 
 var subsectionData = {
+  emptyChart: [
+    {country: "AUS", value: 0},
+    {country: "CAN", value: 0},
+    {country: "FRA", value: 0},
+    {country: "GER", value: 0},
+    {country: "NETH", value: 0},
+    {country: "NZ", value: 0},
+    {country: "NOR", value: 0},
+    {country: "SWE", value: 0},
+    {country: "SWIZ", value: 0},
+    {country: "UK", value: 0},
+    {country: "US", value: 0},
+  ],
   QualityQuestions: [
     {
       questionSet: "Preventative Care Measures",
