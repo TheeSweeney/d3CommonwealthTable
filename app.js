@@ -52,11 +52,13 @@ var createTable = function(params){
         })
         .attr('id', function(d){
           if(d.length > 2) currentRow = d; //set current row name 
-          if(d === '+') return currentRow + "PlusMinus"
+          if(d === '+') return currentRow.split(' ').join('') + "PlusMinus"
         })
-        .style("font-size", "16px")
         .classed('leftAlign', function(d){
           if(d.length > 4) return true;
+        })
+        .classed('plusMinus', function(d){
+          if(d === '+') return true;
         })
         
     $('#d3TableContainer').find("tr:odd").addClass("odd");
@@ -255,9 +257,6 @@ function createQuestionSet(){
 
 
   if(subsectionId !== activeSubsection){
-    //change plus to minus
-    d3.select('#' + subsectionId.slice(0, -2) + 'PlusMinus')
-      .html('-')
 
     activeSubsection = subsectionId;
     
@@ -293,9 +292,6 @@ function createQuestionSet(){
         if(d3.select(this).attr('id').slice(0,-11) === activeSubsection.slice(0,-2)) return '3px solid rgb(255,96,0)'
       })
   }else{
-    //change plus to minus
-    d3.select('#' + subsectionId.slice(0, -2) + 'PlusMinus')
-      .html('+')
     d3.selectAll('.questionSet')
       .html('')
       .style('border-top', '');
@@ -326,22 +322,13 @@ function createSubsections(rowId){
       .style('width', '50%')
       .style('position', 'relative')
       .classed('subsectionBar', true)
-        .append('text')
-          .attr('id', function(d){
-            return d.questionSet.split(' ').join('') + 'PlusMinus'
-          })
-          .style('float', 'right')
-          .classed('plusMinus', true)
-          .html('+')
-
-  d3.selectAll('.subsectionBar')
-    .append('div')
-    .style('max-height', '90%')
-    .style('overflow', 'auto')
-    .classed('questionSet', true)
-    .attr('id', function(d, i){
-      return d.questionSet.split(' ').join('') + 'QuestionSet'
-    })
+        .append('div')
+        .style('max-height', '90%')
+        .style('overflow', 'auto')
+        .classed('questionSet', true)
+        .attr('id', function(d, i){
+          return d.questionSet.split(' ').join('') + 'QuestionSet'
+        })
     
       
           
@@ -358,8 +345,14 @@ function createSubsections(rowId){
 
 var activeRowId;
 function openSubsection(data){
+  var currentRow = $(this).attr('id');
+  console.log(currentRow)
+
+  d3.select('#' + currentRow.slice(0, -3) + 'PlusMinus')
+    .html('-')
+
   var alreadyActive = false;
-  if($(this).attr('id') === activeRowId) alreadyActive = true;
+  if( currentRow === activeRowId) alreadyActive = true;
   
   var rowId = $(this).attr('id');
   activeRowId = rowId
@@ -374,6 +367,9 @@ function openSubsection(data){
   
 
   if(alreadyActive){
+    d3.select('#' + currentRow.slice(0, -3) + 'PlusMinus')
+      .html('+')
+
     $('#' + rowId).next('tr').toggle();
     $('#' + rowId).next("tr").find('td').attr('id','')
 
