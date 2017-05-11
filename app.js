@@ -65,31 +65,12 @@ var createTable = function(params){
 createTable({
     data: tableData
 })
+var svg;
+var chart;
+var x;
+var y;
 
-function createChart(dataSet){
-
-  d3.select("#chart").remove();
-
-  var svg = d3.select(".activeRow").append("svg")
-        .attr("id", "chart")
-        .attr("width", w)
-        .attr("height", h);
-  var chart = svg.append("g")
-        .classed("display", true)
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  var x = d3.scale.ordinal()
-            .domain(dataSet.map(function(entry){
-              return entry.country;
-            }))
-            .rangeBands([0, width])
-  var y = d3.scale.linear()
-            .domain([0, d3.max(dataSet, function(d){
-              return d.value
-            })])
-            .range([height, 0])
-  
-
-  function plot(params){
+function plot(params){
 
     //enter
     this.selectAll('.bar')
@@ -167,6 +148,33 @@ function createChart(dataSet){
         })
   }
 
+
+function createChart(dataSet){
+  
+  // d3.select("#chart").remove();
+
+  svg = d3.select(".activeRow").append("svg")
+        .attr("id", "chart")
+        .attr("width", w)
+        .attr("height", h);
+  chart = svg.append("g")
+        .classed("display", true)
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  x = d3.scale.ordinal()
+            .domain(dataSet.map(function(entry){
+              return entry.country;
+            }))
+            .rangeBands([0, width])
+  y = d3.scale.linear()
+            .domain([0, d3.max(dataSet, function(d){
+              return d.value
+            })])
+            .range([height, 0])
+
+  
+
+  
+
   plot.call(chart,{
     data: dataSet,
     axes: {
@@ -178,6 +186,8 @@ function createChart(dataSet){
 }
 
 var activeQuestion;
+    var a = true;
+
 
 function questionClick(d){
 
@@ -199,8 +209,20 @@ function questionClick(d){
     .style('opacity', function(d,i){
       return (d.questionSet.split(' ').join('') + 'Id') === activeSubsection ? 1 : .3;
     })
+    if(a){
+      createChart(d.data);
+      a = false
+    }else{
+      console.log('here')
+      plot.call(chart, {
+        data: d.data,
+        axes: {
+          x: x,
+          y: y
+        }
+      })
+    }
 
-  createChart(d.data);
 }
 
 function createQuestionSet(){
