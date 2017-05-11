@@ -84,6 +84,12 @@ function createChart(dataSet){
           .classed("display", true)
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    svg.insert('text')//Title
+        .attr('x', 35)
+        .attr('y', h/2)
+        .attr('id', 'directions')
+        .html("Select a question or measure to see data")
+
 
   }
 
@@ -111,16 +117,19 @@ function createChart(dataSet){
             .append('text')
             .classed('barLabel', true)
     if(!initial){
-    this.selectAll('.percentage')
+
+      d3.select('#directions').remove();
+
+      this.selectAll('.percentage')
           .data(params.data)
           .enter()
             .append('text')
             .classed('percentage', true)
       this.selectAll('.noData')
-        .data(params.data)
-        .enter()
-          .append('text')
-          .classed('noData', true)
+          .data(params.data)
+          .enter()
+            .append('text')
+            .classed('noData', true)
     }
     
     //update
