@@ -242,21 +242,28 @@ function questionClick(d){
 
 function createQuestionSet(){
 
+  var subsectionId = $(this).attr('id')
   var alreadyActive = false;
   var subSectionPassed = false;
 
-  if($(this).attr('id') !== activeSubsection){
-    activeSubsection = $(this).attr('id');
+
+
+  if(subsectionId !== activeSubsection){
+    //change plus to minus
+    d3.select('#' + subsectionId.slice(0, -2) + 'PlusMinus')
+      .html('-')
+
+    activeSubsection = subsectionId;
     
     d3.selectAll('.subsectionBar')
       .style('display', function(){
         var display = subSectionPassed ? 'none' : 'initial';
         if (d3.select(this).attr('id') === activeSubsection) subSectionPassed = true
-        return display
+        return display;
       });
-    $('#' + $(this).attr('id')).show();
+    $('#' + subsectionId).show();
     
-    d3.select(this).style('height', '200px')
+    d3.select(this).style('height', '200px');
     
     d3.select('#' + this.id.slice(0, -2) + 'QuestionSet').selectAll('.subsectionQuestions')
       .data(function(d){
@@ -280,10 +287,13 @@ function createQuestionSet(){
         if(d3.select(this).attr('id').slice(0,-11) === activeSubsection.slice(0,-2)) return '3px solid rgb(255,96,0)'
       })
   }else{
+    //change plus to minus
+    d3.select('#' + subsectionId.slice(0, -2) + 'PlusMinus')
+      .html('+')
     d3.selectAll('.questionSet')
       .html('')
-      .style('border-top', '')
-    d3.select(this).style('height', '20px')
+      .style('border-top', '');
+    d3.select(this).style('height', '20px');
     activeSubsection = '';
     $('.subsectionBar').show();
   }
@@ -311,7 +321,11 @@ function createSubsections(rowId){
       .style('position', 'relative')
       .classed('subsectionBar', true)
         .append('text')
+          .attr('id', function(d){
+            return d.questionSet.split(' ').join('') + 'PlusMinus'
+          })
           .style('float', 'right')
+          .classed('plusMinus', true)
           .html('+')
 
   d3.selectAll('.subsectionBar')
