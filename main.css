@@ -94,6 +94,10 @@ td {
 .selectedQuestion {
 	color: rgb(238,123,59);
 	font-size: 15px;
+	float: left;
+	width: 50%;
+	position: relative;
+	top: 50px;
 }
 
 #directions{
