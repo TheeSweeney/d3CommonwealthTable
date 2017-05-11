@@ -322,13 +322,22 @@ function createSubsections(rowId){
       .style('width', '50%')
       .style('position', 'relative')
       .classed('subsectionBar', true)
-        .append('div')
-        .style('max-height', '90%')
-        .style('overflow', 'auto')
-        .classed('questionSet', true)
-        .attr('id', function(d, i){
-          return d.questionSet.split(' ').join('') + 'QuestionSet'
-        })
+        .classed('subsectionBar', true)
+        .append('text')
+          .attr('id', function(d){
+            return d.questionSet.split(' ').join('') + 'PlusMinus'
+          })
+          .style('float', 'right')
+          .html('&#x25bc;')
+
+  d3.selectAll('.subsectionBar')
+    .append('div')
+    .style('max-height', '90%')
+    .style('overflow', 'auto')
+    .classed('questionSet', true)
+    .attr('id', function(d, i){
+      return d.questionSet.split(' ').join('') + 'QuestionSet'
+    })
     
       
           
