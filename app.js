@@ -134,20 +134,20 @@ function createChart(dataSet){
     
     //update
       this.selectAll('.bar')
-              .transition()
-              .duration(500)
-              .attr('x', function(d,i){
-                return x(d.country)
-              })
-              .attr('y', function(d,i){
-                return y(d.value);
-              })
-              .attr('height', function(d,i){
-                return height - y(d.value)
-              })
-              .attr('width', function(d,i){
-                return x.rangeBand() - 3;
-              })
+          .transition()
+          .duration(500)
+          .attr('x', function(d,i){
+            return x(d.country)
+          })
+          .attr('y', function(d,i){
+            return y(d.value);
+          })
+          .attr('height', function(d,i){
+            return height - y(d.value)
+          })
+          .attr('width', function(d,i){
+            return x.rangeBand() - 3;
+          })
       this.selectAll('.percentage')
           .attr('x', function(d,i){
             return d.value === 0 ? x(d.country) + 2 : x(d.country) + 4;
@@ -275,6 +275,9 @@ function createQuestionSet(){
 }
 
 function createSubsections(rowId){
+
+  d3.select('#chart').remove();
+  initial = true;
 
   var activeSubset = subsectionData[rowId.slice(0, -3) + 'Questions'];
 
