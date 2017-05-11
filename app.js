@@ -143,7 +143,7 @@ function createChart(dataSet){
             return y(d.value);
           })
           .attr('height', function(d,i){
-            return height - y(d.value)
+            return d.value < 0 ? 0 : height - y(d.value)
           })
           .attr('width', function(d,i){
             return x.rangeBand() - 3;
@@ -159,8 +159,9 @@ function createChart(dataSet){
             }
           })
           .attr('y', function(d,i){
-            if(d.value === 0 ){
-              return y(d.value)
+            console.log(d.value < 0)
+            if(d.value === 0 || d.value < 0 ){
+              return y(0)
             }else if(d.value < 10){
               return y(d.value) - 2;
             }else{
