@@ -150,16 +150,29 @@ function createChart(dataSet){
           })
       this.selectAll('.percentage')
           .attr('x', function(d,i){
-            return d.value === 0 ? x(d.country) + 2 : x(d.country) + 4;
+            if(d.value === 0 ){
+              return x(d.country)
+            }else if(d.value < 10){
+              return x(d.country) + 8;
+            }else{
+              return  x(d.country) + 4;
+            }
           })
           .attr('y', function(d,i){
-            return d.value === 0 ? y(d.value) : (y(d.value) + 15);
+            if(d.value === 0 ){
+              return y(d.value)
+            }else if(d.value < 10){
+              return y(d.value) - 2;
+            }else{
+              return (y(d.value) + 15)
+            }
+            // return d.value < 10 ? y(d.value) : (y(d.value) + 15);
           })
           .text(function(d,i){
             return d.value === 0 ? 'Data' : (d.value + '%');
           })
           .attr('fill', function(d,i){
-            return d.value === 0 ? 'black' : 'white';
+            return d.value < 10 ? 'black' : 'white';
           })
        this.selectAll('.noData')
           .attr('x', function(d,i){
