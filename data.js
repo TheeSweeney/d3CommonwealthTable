@@ -994,6 +994,189 @@ var subsectionData = {
         },
       ]
     },
+  ],  
+  EquityQuestions: [
+    {
+      questionSet: 'Equity Measures',
+      sectionData:[
+        {
+          'q': "Rated medical care from regular provider was fair or poor",
+          data: [
+            {country: "AUS", value: 03},
+            {country: "CAN", value: 03},
+            {country: "FRA", value: 14},
+            {country: "GER", value: 06},
+            {country: "NETH", value: 04},
+            {country: "NZ", value: -02},
+            {country: "NOR", value: 04},
+            {country: "SWE", value: 05},
+            {country: "SWIZ", value: 02},
+            {country: "UK", value: -03},
+            {country: "US", value: 07}
+          ]
+        },
+        {
+          'q': "Had any cost-related access problem to medical care in the past year",
+          data: [
+            {country: "AUS", value: 11},
+            {country: "CAN", value: 19},
+            {country: "FRA", value: 11},
+            {country: "GER", value: 04},
+            {country: "NETH", value: 07},
+            {country: "NZ", value: 16},
+            {country: "NOR", value: 09},
+            {country: "SWE", value: 08},
+            {country: "SWIZ", value: 15},
+            {country: "UK", value: 03},
+            {country: "US", value: 18}
+          ]
+        },
+        {
+          'q': "Skipped dental care or check up because of cost in the past year",
+          data: [
+            {country: "AUS", value: 1},
+            {country: "CAN", value: 24},
+            {country: "FRA", value: 17},
+            {country: "GER", value: -01},
+            {country: "NETH", value: 1},
+            {country: "NZ", value: 11},
+            {country: "NOR", value: 19},
+            {country: "SWE", value: 14},
+            {country: "SWIZ", value: 16},
+            {country: "UK", value: 05},
+            {country: "US", value: 24}
+          ]
+        },
+        {
+          'q': "Had serious problems paying or was unable to pay medical bills",
+          data: [
+            {country: "AUS", value: 06},
+            {country: "CAN", value: 1},
+            {country: "FRA", value: 34},
+            {country: "GER", value: 1},
+            {country: "NETH", value: 11},
+            {country: "NZ", value: 11},
+            {country: "NOR", value: 08},
+            {country: "SWE", value: 1},
+            {country: "SWIZ", value: 14},
+            {country: "UK", value: 03},
+            {country: "US", value: 18}
+          ]
+        },
+        {
+          'q': "Somewhat or very difficult to obtain after-hours care",
+          data: [
+            {country: "AUS", value: 14},
+            {country: "CAN", value: 08},
+            {country: "FRA", value: 06},
+            {country: "GER", value: 04},
+            {country: "NETH", value: 04},
+            {country: "NZ", value: 17},
+            {country: "NOR", value: 09},
+            {country: "SWE", value: 04},
+            {country: "SWIZ", value: 02},
+            {country: "UK", value: -01},
+            {country: "US", value: 1}
+          ]
+        },
+        {
+          'q': "Waited two months or longer for specialist appointment",
+          data: [
+            {country: "AUS", value: 1},
+            {country: "CAN", value: 02},
+            {country: "FRA", value: -08},
+            {country: "GER", value: "--"},
+            {country: "NETH", value: 01},
+            {country: "NZ", value: 14},
+            {country: "NOR", value: 02},
+            {country: "SWE", value: 04},
+            {country: "SWIZ", value: 01},
+            {country: "UK", value: -14},
+            {country: "US", value: 04}
+          ]
+        },
+        {
+          'q': "Specialist lacked medical history or regular doctor not informed about specialist care in the past two years",
+          data: [
+            {country: "AUS", value: 12},
+            {country: "CAN", value: 12},
+            {country: "FRA", value: -04},
+            {country: "GER", value: 0},
+            {country: "NETH", value: 01},
+            {country: "NZ", value: 09},
+            {country: "NOR", value: -05},
+            {country: "SWE", value: 02},
+            {country: "SWIZ", value: 03},
+            {country: "UK", value: 11},
+            {country: "US", value: 15}
+          ]
+        },
+        {
+          'q': "Have a regular doctor or place",
+          data: [
+            {country: "AUS", value: 05},
+            {country: "CAN", value: 02},
+            {country: "FRA", value: 0},
+            {country: "GER", value: 01},
+            {country: "NETH", value: 0},
+            {country: "NZ", value: 01},
+            {country: "NOR", value: 0},
+            {country: "SWE", value: -02},
+            {country: "SWIZ", value: -02},
+            {country: "UK", value: 03},
+            {country: "US", value: 09}
+          ]
+        },
+        {
+          'q': "Regular doctor always or often spent enough time with them and explained things in a way they could understand",
+          data: [
+            {country: "AUS", value: 05},
+            {country: "CAN", value: 09},
+            {country: "FRA", value: 05},
+            {country: "GER", value: 21},
+            {country: "NETH", value: 01},
+            {country: "NZ", value: 15},
+            {country: "NOR", value: 06},
+            {country: "SWE", value: 05},
+            {country: "SWIZ", value: 06},
+            {country: "UK", value: -01},
+            {country: "US", value: 09}
+          ]
+        },
+        {
+          'q': "Regular doctor always or often knew important information about their medical history",
+          data: [
+            {country: "AUS", value: 05},
+            {country: "CAN", value: 07},
+            {country: "FRA", value: 27},
+            {country: "GER", value: 14},
+            {country: "NETH", value: 0},
+            {country: "NZ", value: 08},
+            {country: "NOR", value: 1},
+            {country: "SWE", value: -03},
+            {country: "SWIZ", value: -05},
+            {country: "UK", value: 05},
+            {country: "US", value: 09}
+          ]
+        },
+        {
+          'q': "Talked with provider about healthy diet, exercise and physical activity in the past two years",
+          data: [
+            {country: "AUS", value: -05},
+            {country: "CAN", value: 04},
+            {country: "FRA", value: 15},
+            {country: "GER", value: 06},
+            {country: "NETH", value: 0},
+            {country: "NZ", value: -12},
+            {country: "NOR", value: 01},
+            {country: "SWE", value: 0},
+            {country: "SWIZ", value: -03},
+            {country: "UK", value: -08},
+            {country: "US", value: 11}
+          ]
+        }
+      ]
+    }
   ]
 }
 
@@ -1008,6 +1191,7 @@ var subsectionData = {
 //         data:[
 //           {country: "AUS", value: 74},
 //           {country: "CAN", value: 63},
+
 //           {country: "FRA", value: 0},
 //           {country: "GER", value: 46},
 //           {country: "NETH", value: 62},
