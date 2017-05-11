@@ -167,7 +167,7 @@ function createChart(dataSet){
             }
           })
           .attr('y', function(d,i){
-            console.log(d.value < 0)
+            
             if(d.value === 0 || d.value < 0 ){
               return y(0)
             }else if(d.value < 10){
@@ -257,6 +257,7 @@ function createQuestionSet(){
 
     d3.selectAll('.subsectionBar')
       .style('height', '20px')
+    
 
   if(subsectionId !== activeSubsection){
 
@@ -270,7 +271,7 @@ function createQuestionSet(){
         return display;
       });
     $('#' + subsectionId).show();
-    console.log(this)
+    
     d3.select(this).style('height', '200px');
     
     d3.select('#' + this.id.slice(0, -2) + 'QuestionSet').selectAll('.subsectionQuestions')
@@ -288,11 +289,12 @@ function createQuestionSet(){
           questionClick.call(this, d)
         })
 
+    
 
-
-    d3.selectAll('.questionSet')
+    d3.selectAll('#' + this.id.slice(0, -2) + 'QuestionSet')
       .style('border-top', function(){
         if(d3.select(this).attr('id').slice(0,-11) === activeSubsection.slice(0,-2)) return '3px solid rgb(255,96,0)'
+          return ''
       })
   }else{
     d3.selectAll('.questionSet')
@@ -358,15 +360,17 @@ function createSubsections(rowId){
 var activeRowId;
 function openSubsection(data){
   var currentRow = $(this).attr('id');
-  console.log(currentRow)
+  var alreadyActive = false;
+  var rowId = $(this).attr('id');
+
+  d3.selectAll('.questionSet')
+      .remove();
 
   d3.select('#' + currentRow.slice(0, -3) + 'PlusMinus')
     .html('-')
 
-  var alreadyActive = false;
   if( currentRow === activeRowId) alreadyActive = true;
   
-  var rowId = $(this).attr('id');
   activeRowId = rowId
     
   d3.select('.activeRow').classed('activeRow', false);
