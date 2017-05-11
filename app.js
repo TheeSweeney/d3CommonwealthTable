@@ -151,7 +151,7 @@ function createChart(dataSet){
       this.selectAll('.percentage')
           .attr('x', function(d,i){
             if(d.value === 0 ){
-              return x(d.country)
+              return x(d.country) + 2
             }else if(d.value < 10){
               return x(d.country) + 8;
             }else{
@@ -274,6 +274,7 @@ function createQuestionSet(){
         })
 
 
+
     d3.selectAll('.questionSet')
       .style('border-top', function(){
         if(d3.select(this).attr('id').slice(0,-11) === activeSubsection.slice(0,-2)) return '3px solid rgb(255,96,0)'
@@ -309,27 +310,20 @@ function createSubsections(rowId){
       .style('width', '50%')
       .style('position', 'relative')
       .classed('subsectionBar', true)
-        .append('div')
-        .style('max-height', '90%')
-        .style('overflow', 'auto')
-        .classed('questionSet', true)
-        .attr('id', function(d, i){
-          return d.questionSet.split(' ').join('') + 'QuestionSet'
-        })
-  d3.select('.activeRow')
-    .append('g')
-    .attr('id', 'traingleGroup')
-  d3.select('#traingleGroup').selectAll('.triangle')
-    .data(activeSubset)
-    .enter()
-      .append('path')
-      .attr('d', function(d){
-        return 'M 22,40 42,40 32,22 z';
-      })
-      .attr('transform', 'translate(-35,-35)')
-      .style('fill', '#4ABDBC')
-      .attr('x', 30)
-      .attr('y', 30)
+        .append('text')
+          .style('float', 'right')
+          .html('+')
+
+  d3.selectAll('.subsectionBar')
+    .append('div')
+    .style('max-height', '90%')
+    .style('overflow', 'auto')
+    .classed('questionSet', true)
+    .attr('id', function(d, i){
+      return d.questionSet.split(' ').join('') + 'QuestionSet'
+    })
+    
+      
           
 
   d3.selectAll('.subsectionBar')
