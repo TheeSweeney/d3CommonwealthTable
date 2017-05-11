@@ -14,6 +14,8 @@ var height = h - margin.top - margin.bottom;
 var activeSubsection;
 
 var createTable = function(params){
+    var currentRow;
+
     d3.select("#d3TableContainer")
         .append("table")
         .style("border-collapse", "collapse")
@@ -43,10 +45,14 @@ var createTable = function(params){
             if(d === 'header') return 'rgb(4,76,127)';
         })
         .attr('colspan', function(d){
-            if(d === '   ') return 12;
+            if(d === '   ') return 13;
         })
         .text(function(d){
           return d;
+        })
+        .attr('id', function(d){
+          if(d.length > 2) currentRow = d; //set current row name 
+          if(d === '+') return currentRow + "PlusMinus"
         })
         .style("font-size", "16px")
         .classed('leftAlign', function(d){
