@@ -255,8 +255,11 @@ function createQuestionSet(){
   var subSectionPassed = false;
 
 
+    d3.selectAll('.subsectionBar')
+      .style('height', '20px')
 
   if(subsectionId !== activeSubsection){
+
 
     activeSubsection = subsectionId;
     
@@ -267,7 +270,7 @@ function createQuestionSet(){
         return display;
       });
     $('#' + subsectionId).show();
-    
+    console.log(this)
     d3.select(this).style('height', '200px');
     
     d3.select('#' + this.id.slice(0, -2) + 'QuestionSet').selectAll('.subsectionQuestions')
