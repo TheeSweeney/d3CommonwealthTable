@@ -313,6 +313,8 @@ function createSubsections(rowId){
 
   var activeSubset = subsectionData[rowId.slice(0, -3) + 'Questions'];
 
+  createChart(subsectionData.emptyChart)
+  
   d3.select('.activeRow').selectAll('.subsectionBar')
     .data(activeSubset)
     .enter()
@@ -353,7 +355,6 @@ function createSubsections(rowId){
       d3.select(this).style('opacity', 1)
     })
 
-    createChart(subsectionData.emptyChart)
 
 }
 
