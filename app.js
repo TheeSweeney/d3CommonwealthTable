@@ -79,6 +79,8 @@ var svg;
 var chart;
 var x;
 var y;
+var activeQuestion;
+
 
 function createChart(dataSet){
 
@@ -222,7 +224,8 @@ function createChart(dataSet){
 
 }
 
-var activeQuestion;
+
+
 
 function questionClick(d){
 
@@ -248,6 +251,8 @@ function questionClick(d){
   createChart(d.data);
 }
 
+var questionSet = [];
+
 function createQuestionSet(){
 
   var subsectionId = $(this).attr('id')
@@ -260,7 +265,6 @@ function createQuestionSet(){
     
 
   if(subsectionId !== activeSubsection){
-
 
     activeSubsection = subsectionId;
     
@@ -290,12 +294,13 @@ function createQuestionSet(){
         })
 
     
-
     d3.selectAll('#' + this.id.slice(0, -2) + 'QuestionSet')
       .style('border-top', function(){
         if(d3.select(this).attr('id').slice(0,-11) === activeSubsection.slice(0,-2)) return '3px solid rgb(255,96,0)'
           return ''
       })
+
+     
   }else{
     d3.selectAll('.questionSet')
       .html('')
@@ -308,18 +313,21 @@ function createQuestionSet(){
 
 function createSubsections(rowId){
 
+  questionSets = [];
+
   d3.select('#chart').remove();
   initial = true;
 
   var activeSubset = subsectionData[rowId.slice(0, -3) + 'Questions'];
 
   createChart(subsectionData.emptyChart)
-  
+
   d3.select('.activeRow').selectAll('.subsectionBar')
     .data(activeSubset)
     .enter()
       .append('text')
       .html(function(d){
+        questionSets.push(d.questionSet)
         return d.questionSet;
       })
       .attr('id', function(d){
@@ -346,9 +354,26 @@ function createSubsections(rowId){
       return d.questionSet.split(' ').join('') + 'QuestionSet'
     })
     
+  console.log(questionSets)
+  var observer = new MutationObserver(function(mutations) {
+    if(mutations.length == 2){
+      console.log('closed')
+    } else {
+      console.log('open')
       
-          
+    }
 
+  });
+
+  var config = { attributes: true, childList: true, characterData: true };
+
+  for (var i = 0; i < questionSets.length; i++){
+    var target = document.querySelector('#' + questionSets[i].split(' ').join('') + 'QuestionSet')
+
+    observer.observe(target, config);
+  }
+
+  
   d3.selectAll('.subsectionBar')
     .on('click', function(){
       createQuestionSet.call(this)
